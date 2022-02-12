@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-export const RecipesScreen = () => {
+export const RecipesTab = () => {
     return (
         <View>
             <Text>Recipes</Text>

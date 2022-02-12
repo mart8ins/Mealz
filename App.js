@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import { SafeAreaView } from "react-native";
 
 // NAVIGATIONS
 import { NavigationContainer } from "@react-navigation/native";
@@ -9,11 +10,12 @@ import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 
 // COMPONENTS
-import { ShoppingListScreen } from "./src/components/shoppingList/Shopping-list.screen";
-import { RecipesScreen } from "./src/components/recipes/Recipes.screen";
-import { HomeScreen } from "./src/components/home/Home.screen";
+import { ShoppingListTab } from "./src/components/shoppingList/Shopping-list.tab";
+import { RecipesTab } from "./src/components/recipes/Recipes.tab";
+import { HomeTab } from "./src/components/home/Home.tab";
 
-import { SafeAreaView } from "react-native";
+// THEME
+import { theme } from "./src/styling/index";
 
 const Tab = createBottomTabNavigator();
 
@@ -23,15 +25,16 @@ export default function App() {
             <SafeAreaView style={{ flex: 1 }}>
                 <NavigationContainer>
                     <Tab.Navigator
-                        initialRouteName="Home"
+                        initialRouteName="Shopping list"
                         screenOptions={{
-                            tabBarActiveTintColor: "#B0B22B",
+                            tabBarActiveTintColor:
+                                theme.colors.color.navigation,
                             headerShown: false,
                         }}
                     >
                         <Tab.Screen
                             name="Home"
-                            component={HomeScreen}
+                            component={HomeTab}
                             options={{
                                 tabBarIcon: ({ color, size }) => (
                                     <Ionicons
@@ -45,7 +48,7 @@ export default function App() {
 
                         <Tab.Screen
                             name="Shopping list"
-                            component={ShoppingListScreen}
+                            component={ShoppingListTab}
                             options={{
                                 tabBarIcon: ({ color, size }) => (
                                     <FontAwesome
@@ -58,7 +61,7 @@ export default function App() {
                         />
                         <Tab.Screen
                             name="Recipes"
-                            component={RecipesScreen}
+                            component={RecipesTab}
                             options={{
                                 tabBarIcon: ({ color, size }) => (
                                     <FontAwesome
