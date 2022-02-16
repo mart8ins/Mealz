@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { theme } from "../../../styling/index";
+import { theme } from "../../../../../styling/index";
 
 export const CreateListButton = ({ navigation }) => {
     return (
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     buttonText: {
-        color: theme.colors.color.green,
+        color: theme.colors.color.light,
         fontWeight: "bold",
         fontSize: theme.sizes.md,
     },

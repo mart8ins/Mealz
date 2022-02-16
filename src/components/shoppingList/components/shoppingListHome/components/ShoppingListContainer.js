@@ -20,20 +20,18 @@ export const ShoppingListContainer = ({ navigation }) => {
     const renderList = ({ item }) => {
         return (
             <TouchableOpacity
-                style={styles.listItem}
+                style={[
+                    styles.listItem,
+                    item.completed
+                        ? styles.statusCompleted
+                        : styles.statusPending,
+                ]}
                 onPress={() =>
                     navigation.navigate("My list", { listId: item.id })
                 }
             >
                 <>
-                    <View
-                        style={[
-                            styles.dateContainer,
-                            item.completed
-                                ? styles.statusCompleted
-                                : styles.statusPending,
-                        ]}
-                    >
+                    <View style={[styles.dateContainer]}>
                         <Text style={styles.date}>{item.date}</Text>
                     </View>
                     <Text
@@ -44,7 +42,7 @@ export const ShoppingListContainer = ({ navigation }) => {
                                 : styles.statusPending,
                         ]}
                     >
-                        {item.completed ? "Finished" : "Open"}
+                        {item.completed ? "Completed" : "In process"}
                     </Text>
                 </>
             </TouchableOpacity>
@@ -75,21 +73,24 @@ const styles = StyleSheet.create({
         backgroundColor: theme.colors.bg.dark,
         marginBottom: theme.sizes.md,
         padding: theme.sizes.sm,
-        borderRadius: 4,
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
+        borderWidth: 1,
+        borderRadius: 5,
     },
     dateContainer: {
         fontSize: theme.sizes.md,
-        padding: theme.sizes.sm,
         borderRadius: 8,
-        borderWidth: 2,
+        backgroundColor: theme.colors.bg.light,
     },
     date: {
-        color: "white",
+        color: theme.colors.color.dark,
         fontWeight: "bold",
+        fontSize: theme.sizes.md,
+        margin: 0,
+        padding: theme.sizes.sm,
     },
     status: {
         fontSize: theme.sizes.md,
