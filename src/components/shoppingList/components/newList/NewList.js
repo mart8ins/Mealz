@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from "react";
-import uuid from "react-native-uuid";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useState, useEffect, useContext } from "react";
+import { ShoppingListContext } from "../../../../context/ShoppingListContext";
+import { View, StyleSheet } from "react-native";
 import { theme } from "../../../../styling/index";
+import uuid from "react-native-uuid";
 import { DateFormat } from "../../../../../utils/DateFormat";
+
 import { NewListTitle } from "./components/NewListTitle";
 import { InputFields } from "./components/InputFields";
 import { ListPreview } from "./components/ListPreview";
 
 export const NewList = ({ navigation }) => {
+    const { listItems, setListItems, shoppingLists, setShoppingLists } =
+        useContext(ShoppingListContext);
+
     const [date, setDate] = useState(undefined);
-    const [list, setList] = useState([]);
+    // const [list, setList] = useState([]);
     const [listItemName, setListItemName] = useState("");
     const [listItemQuantity, setListItemQuantity] = useState("");
     const [listItemUnit, setListItemUnit] = useState("");
@@ -29,26 +34,36 @@ export const NewList = ({ navigation }) => {
                 unit: listItemUnit,
                 recipe: undefined,
                 meal: undefined,
+                checked: false,
             };
-            setList([...list, item]);
+            setListItems([...listItems, item]);
             setListItemName("");
             setListItemQuantity("");
             setListItemUnit("");
         }
     };
 
-    useEffect(() => {
-        console.log(list);
-    }, [list]);
-
-    // const create = () => {
-    //     console.log("Saglabāt listi");
-    //     navigation.goBack();
-    // };
+    const createList = async () => {
+        if (date && listItems.length > 0) {
+            const newList = {
+                listId: uuid.v4(),
+                date,
+                listItems,
+                completed: false,
+            };
+            setShoppingLists([...shoppingLists, newList]);
+            setListItems([]);
+            navigation.goBack();
+        }
+    };
 
     return (
         <View style={styles.container}>
-            <NewListTitle date={date} />
+            <NewListTitle
+                date={date}
+                list={listItems}
+                createList={createList}
+            />
 
             <InputFields
                 setListItemName={setListItemName}
@@ -60,11 +75,7 @@ export const NewList = ({ navigation }) => {
                 addItemToList={addItemToList}
             />
 
-            <ListPreview list={list} />
-
-            <TouchableOpacity onPress={addItemToList}>
-                <Text>Create list</Text>
-            </TouchableOpacity>
+            <ListPreview list={listItems} setListItems={setListItems} />
         </View>
     );
 };

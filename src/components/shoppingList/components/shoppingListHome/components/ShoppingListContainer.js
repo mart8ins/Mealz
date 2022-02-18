@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
     View,
     Text,
@@ -7,15 +8,22 @@ import {
     TouchableOpacity,
 } from "react-native";
 import { theme } from "../../../../../styling/index";
-
-const LISTITEMS = [
-    { id: 1, date: "04.02.2020", completed: false },
-    { id: 2, date: "07.02.2020", completed: true },
-    { id: 3, date: "09.02.2020", completed: true },
-];
+import { ShoppingListContext } from "../../../../../context/ShoppingListContext";
 
 export const ShoppingListContainer = ({ navigation }) => {
-    const [list, setList] = useState();
+    const { shoppingLists, setShoppingLists } = useContext(ShoppingListContext);
+
+    const getShoppingListFromStorage = async () => {
+        const store = await AsyncStorage.getItem("shoppingLists");
+        const shoppingListsParsed = JSON.parse(store);
+        if (shoppingListsParsed.length > 0) {
+            setShoppingLists(shoppingListsParsed);
+        }
+    };
+
+    useEffect(() => {
+        getShoppingListFromStorage();
+    }, []);
 
     const renderList = ({ item }) => {
         return (
@@ -27,7 +35,7 @@ export const ShoppingListContainer = ({ navigation }) => {
                         : styles.statusPending,
                 ]}
                 onPress={() =>
-                    navigation.navigate("My list", { listId: item.id })
+                    navigation.navigate("My list", { listId: item.listId })
                 }
             >
                 <>
@@ -49,17 +57,19 @@ export const ShoppingListContainer = ({ navigation }) => {
         );
     };
 
-    useEffect(() => {
-        setList(LISTITEMS);
-    }, []);
-
     return (
         <View style={styles.container}>
-            <FlatList
-                data={list}
-                renderItem={renderList}
-                keyExtractor={(item) => item.id}
-            />
+            {shoppingLists.length > 0 ? (
+                <FlatList
+                    data={shoppingLists}
+                    renderItem={renderList}
+                    keyExtractor={(item) => item.listId}
+                />
+            ) : (
+                <View style={styles.noListsToShow}>
+                    <Text>No lists to show</Text>
+                </View>
+            )}
         </View>
     );
 };
@@ -102,5 +112,10 @@ const styles = StyleSheet.create({
     statusPending: {
         borderColor: theme.colors.color.red,
         color: theme.colors.color.red,
+    },
+    noListsToShow: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
     },
 });

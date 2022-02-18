@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { theme } from "../../../../styling/index";
 
 export const ShoppingList = ({ route }) => {
-    console.log(JSON.stringify(route.params.listId));
+    // console.log(JSON.stringify(route.params.listId));
     return (
         <View>
             <Text>ShoppingList</Text>
