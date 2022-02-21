@@ -20,7 +20,6 @@ export const ShoppingListContainer = ({ navigation }) => {
             setShoppingLists(shoppingListsParsed);
         }
     };
-
     useEffect(() => {
         getShoppingListFromStorage();
     }, []);

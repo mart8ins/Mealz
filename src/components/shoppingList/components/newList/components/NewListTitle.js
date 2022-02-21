@@ -2,16 +2,32 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { theme } from "../../../../../styling/index";
 
-export const NewListTitle = ({ date, list, createList }) => {
+export const NewListTitle = ({
+    date,
+    list = [],
+    createList,
+    deleteList,
+    deleteConfirm,
+}) => {
     return (
         <View style={styles.titleContainer}>
             <Text style={styles.title}>Shopping list for {date}</Text>
-            {list.length > 0 && (
+            {list && list.length > 0 && (
                 <TouchableOpacity
                     onPress={createList}
                     style={styles.createButton}
                 >
                     <Text style={styles.createText}>Create</Text>
+                </TouchableOpacity>
+            )}
+            {deleteList && (
+                <TouchableOpacity
+                    onPress={deleteList}
+                    style={styles.createButton}
+                >
+                    <Text style={[styles.createText, styles.deleteListBtn]}>
+                        {deleteConfirm ? "Confirm" : "Delete"}
+                    </Text>
                 </TouchableOpacity>
             )}
         </View>
@@ -40,7 +56,12 @@ const styles = StyleSheet.create({
         fontSize: theme.sizes.md,
         textAlign: "center",
         backgroundColor: "grey",
-        color: theme.colors.color.green,
+        color: theme.colors.color.light,
+        backgroundColor: theme.colors.bg.green,
         fontWeight: "bold",
+    },
+    deleteListBtn: {
+        color: theme.colors.color.light,
+        backgroundColor: theme.colors.bg.red,
     },
 });

@@ -21,10 +21,12 @@ export const InputFields = ({
     return (
         <View style={styles.inputFieldsContainer}>
             <TextInput
-                style={styles.groceryNameInput}
+                style={[styles.groceryNameInput]}
                 onChangeText={setListItemName}
                 value={listItemName}
                 placeholder="Grocery"
+                autoFocus={true}
+                keyboardType="ascii-capable"
             />
 
             <View style={styles.amountContainer}>
@@ -85,11 +87,12 @@ const styles = StyleSheet.create({
     },
     addListItemButtonView: {
         backgroundColor: theme.colors.bg.light,
-        borderRadius: 10,
+        borderRadius: 6,
         padding: 10,
+        backgroundColor: theme.colors.color.green,
     },
     addListItemButtonText: {
-        color: theme.colors.color.dark,
+        color: theme.colors.color.light,
         fontWeight: "bold",
     },
 });
