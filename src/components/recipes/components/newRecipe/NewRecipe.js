@@ -21,37 +21,48 @@ export const NewRecipe = () => {
     const [recipePreperation, setRecipePreperation] = useState("");
     const [caloriesPerServing, setCaloriesPerServing] = useState(undefined);
     const [imageUri, setImageUri] = useState(undefined);
+    const [recipeGroceries, setRecipeGroceries] = useState([]);
 
-    console.log(imageUri);
     return (
-        <ScrollView>
-            <KeyboardAvoidingView style={styles.container} behavior={"height"}>
-                <ChooseMeal setMeal={setMeal} meal={meal} />
-                <RecipeName
-                    recipeName={recipeName}
-                    setRecipeNameMeal={setRecipeNameMeal}
-                />
+        <KeyboardAvoidingView style={styles.container} behavior={"height"}>
+            <ScrollView style={{ paddingBottom: 120 }}>
+                <View>
+                    <ChooseMeal setMeal={setMeal} meal={meal} />
+                    <RecipeName
+                        recipeName={recipeName}
+                        setRecipeNameMeal={setRecipeNameMeal}
+                    />
 
-                <RecipePreperation
-                    recipePreperation={recipePreperation}
-                    setRecipePreperation={setRecipePreperation}
-                />
+                    <RecipePreperation
+                        recipePreperation={recipePreperation}
+                        setRecipePreperation={setRecipePreperation}
+                    />
 
-                <CaloriesPerServing
-                    caloriesPerServing={caloriesPerServing}
-                    setCaloriesPerServing={setCaloriesPerServing}
-                />
+                    <CaloriesPerServing
+                        caloriesPerServing={caloriesPerServing}
+                        setCaloriesPerServing={setCaloriesPerServing}
+                    />
 
-                <RecipeImage imageUri={imageUri} setImageUri={setImageUri} />
+                    <RecipeImage
+                        imageUri={imageUri}
+                        setImageUri={setImageUri}
+                    />
 
-                <RecipeIngredients />
-            </KeyboardAvoidingView>
-        </ScrollView>
+                    <RecipeIngredients
+                        recipeGroceries={recipeGroceries}
+                        setRecipeGroceries={setRecipeGroceries}
+                    />
+                </View>
+            </ScrollView>
+        </KeyboardAvoidingView>
     );
 };
 
 const styles = StyleSheet.create({
-    container: { flex: 1 },
+    container: {
+        flex: 1,
+        alignItems: "center",
+    },
 });
 
 const recipe = {

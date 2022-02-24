@@ -1,93 +1,17 @@
 import React, { useState } from "react";
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    TextInput,
-    StyleSheet,
-} from "react-native";
+import { View, StyleSheet } from "react-native";
 import { theme } from "../../../../../styling/index";
-import { UnitSelector } from "../../../../../../utils/UnitSelector";
+import { GrocerieListInputs } from "../../../../../shared/grocerieListInputs/GrocerieListInputs";
 
-export const RecipeIngredients = ({}) => {
-    const [listItemName, setListItemName] = useState("");
-    const [listItemQuantity, setListItemQuantity] = useState("");
-    const [listItemUnit, setListItemUnit] = useState("");
+export const RecipeIngredients = ({ recipeGroceries, setRecipeGroceries }) => {
+    const addItemToList = (item) => {
+        if (item.name && item.quantity && item.unit) {
+            setRecipeGroceries([...recipeGroceries, item]);
+        }
+    };
 
-    const addItemToList = () => {};
-    return (
-        <View style={styles.inputFieldsContainer}>
-            <TextInput
-                style={[styles.groceryNameInput]}
-                onChangeText={setListItemName}
-                value={listItemName}
-                placeholder="Grocery"
-                keyboardType="ascii-capable"
-            />
-
-            <View style={styles.amountContainer}>
-                <TextInput
-                    style={[styles.groceryNameInput, styles.groceryQuantity]}
-                    onChangeText={setListItemQuantity}
-                    value={listItemQuantity}
-                    placeholder="Quantity"
-                    keyboardType="numeric"
-                />
-                <UnitSelector
-                    style={[styles.groceryNameInput, styles.groceryUnit]}
-                    setListItemUnit={setListItemUnit}
-                    listItemUnit={listItemUnit}
-                />
-                <TouchableOpacity
-                    onPress={addItemToList}
-                    style={styles.addListItemButtonView}
-                >
-                    <Text style={styles.addListItemButtonText}>
-                        Add to list
-                    </Text>
-                </TouchableOpacity>
-            </View>
-        </View>
-    );
+    console.log(recipeGroceries);
+    return <GrocerieListInputs addItemToList={addItemToList} />;
 };
 
-const styles = StyleSheet.create({
-    inputFieldsContainer: {
-        flex: 1,
-        padding: theme.sizes.sm,
-        width: "95%",
-        alignSelf: "center",
-    },
-    groceryNameInput: {
-        borderBottomWidth: 1,
-        borderColor: theme.colors.color.dark,
-        height: 45,
-        padding: 5,
-        margin: 3,
-        borderRadius: 5,
-        textAlign: "center",
-    },
-    amountContainer: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-    },
-    groceryQuantity: { width: 110, textAlign: "center" },
-    groceryUnit: {
-        width: 110,
-        justifyContent: "center",
-        alignItems: "center",
-        paddingLeft: 40,
-        textAlign: "center",
-    },
-    addListItemButtonView: {
-        borderRadius: 6,
-        padding: 8,
-        backgroundColor: theme.colors.bg.orange,
-    },
-    addListItemButtonText: {
-        color: theme.colors.color.light,
-        fontWeight: "bold",
-    },
-});
+const styles = StyleSheet.create({});

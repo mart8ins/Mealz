@@ -6,20 +6,13 @@ import { DateFormat } from "../../../../../utils/DateFormat";
 
 import { GrocerieListInputs } from "../../../../shared/grocerieListInputs/GrocerieListInputs";
 import { NewListTitle } from "./components/NewListTitle";
-import { InputFields } from "./components/InputFields";
 import { ListPreview } from "./components/ListPreview";
 
 export const NewList = ({ navigation }) => {
     const { listItems, setListItems, shoppingLists, setShoppingLists } =
         useContext(ShoppingListContext);
 
-    const [itemList, setItemList] = useState();
-
     const [date, setDate] = useState(undefined);
-    // const [list, setList] = useState([]);
-    const [listItemName, setListItemName] = useState("");
-    const [listItemQuantity, setListItemQuantity] = useState("");
-    const [listItemUnit, setListItemUnit] = useState("");
 
     // gate date and set for ui in needed format
     useEffect(() => {
@@ -27,25 +20,22 @@ export const NewList = ({ navigation }) => {
         setDate(String(date));
     }, []);
 
-    const addItemToList = () => {
-        if (listItemName && listItemQuantity && listItemUnit) {
+    const addItemToList = (list) => {
+        if (list.name && list.quantity && list.unit) {
             const item = {
                 id: uuid.v4(),
-                name: listItemName,
-                quantity: listItemQuantity,
-                unit: listItemUnit,
+                name: list.name,
+                quantity: list.quantity,
+                unit: list.unit,
                 recipe: undefined,
                 meal: undefined,
                 checked: false,
             };
             setListItems([...listItems, item]);
-            setListItemName("");
-            setListItemQuantity("");
-            setListItemUnit("");
         }
     };
 
-    const createList = async () => {
+    const createList = () => {
         if (date && listItems.length > 0) {
             const newList = {
                 listId: uuid.v4(),
@@ -66,19 +56,7 @@ export const NewList = ({ navigation }) => {
                 list={listItems}
                 createList={createList}
             />
-
-            <InputFields
-                setListItemName={setListItemName}
-                listItemName={listItemName}
-                setListItemQuantity={setListItemQuantity}
-                listItemQuantity={listItemQuantity}
-                setListItemUnit={setListItemUnit}
-                listItemUnit={listItemUnit}
-                addItemToList={addItemToList}
-            />
-
-            {/* <GrocerieListInputs /> */}
-
+            <GrocerieListInputs addItemToList={addItemToList} />
             <ListPreview list={listItems} setListItems={setListItems} />
         </View>
     );

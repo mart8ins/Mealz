@@ -9,12 +9,22 @@ import {
 import { theme } from "../../styling/index";
 import { UnitSelector } from "../../../utils/UnitSelector";
 
-export const RecipeIngredients = ({ setItemList }) => {
+export const GrocerieListInputs = ({ addItemToList }) => {
     const [listItemName, setListItemName] = useState("");
     const [listItemQuantity, setListItemQuantity] = useState("");
     const [listItemUnit, setListItemUnit] = useState("");
 
-    const addItemToList = () => {};
+    const addToList = async () => {
+        const item = {
+            name: listItemName,
+            quantity: listItemQuantity,
+            unit: listItemUnit,
+        };
+        await addItemToList(item);
+        setListItemName("");
+        setListItemQuantity("");
+        setListItemUnit("");
+    };
     return (
         <View style={styles.inputFieldsContainer}>
             <TextInput
@@ -39,7 +49,7 @@ export const RecipeIngredients = ({ setItemList }) => {
                     listItemUnit={listItemUnit}
                 />
                 <TouchableOpacity
-                    onPress={addItemToList}
+                    onPress={addToList}
                     style={styles.addListItemButtonView}
                 >
                     <Text style={styles.addListItemButtonText}>
@@ -57,6 +67,7 @@ const styles = StyleSheet.create({
         padding: theme.sizes.sm,
         width: "95%",
         alignSelf: "center",
+        paddingBottom: 150,
     },
     groceryNameInput: {
         borderBottomWidth: 1,
