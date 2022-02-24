@@ -15,7 +15,6 @@ const meals = [
 ];
 
 export const MealType = ({ navigation }) => {
-    console.log(navigation);
     const renderMealTypes = ({ item }) => {
         return (
             <TouchableOpacity

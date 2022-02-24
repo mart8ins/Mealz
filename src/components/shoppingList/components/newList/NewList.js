@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { ShoppingListContext } from "../../../../context/ShoppingListContext";
 import { View, StyleSheet } from "react-native";
-import { theme } from "../../../../styling/index";
 import uuid from "react-native-uuid";
 import { DateFormat } from "../../../../../utils/DateFormat";
 
+import { GrocerieListInputs } from "../../../../shared/grocerieListInputs/GrocerieListInputs";
 import { NewListTitle } from "./components/NewListTitle";
 import { InputFields } from "./components/InputFields";
 import { ListPreview } from "./components/ListPreview";
@@ -12,6 +12,8 @@ import { ListPreview } from "./components/ListPreview";
 export const NewList = ({ navigation }) => {
     const { listItems, setListItems, shoppingLists, setShoppingLists } =
         useContext(ShoppingListContext);
+
+    const [itemList, setItemList] = useState();
 
     const [date, setDate] = useState(undefined);
     // const [list, setList] = useState([]);
@@ -74,6 +76,8 @@ export const NewList = ({ navigation }) => {
                 listItemUnit={listItemUnit}
                 addItemToList={addItemToList}
             />
+
+            {/* <GrocerieListInputs /> */}
 
             <ListPreview list={listItems} setListItems={setListItems} />
         </View>
