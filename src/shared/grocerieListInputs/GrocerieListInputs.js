@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     View,
     Text,
@@ -7,23 +7,37 @@ import {
     StyleSheet,
 } from "react-native";
 import { theme } from "../../styling/index";
-import { UnitSelector } from "../../../utils/UnitSelector";
+import { UnitSelector } from "../../utils/UnitSelector";
 
-export const GrocerieListInputs = ({ addItemToList }) => {
+export const GrocerieListInputs = ({ addItemToList, autoFocus }) => {
     const [listItemName, setListItemName] = useState("");
     const [listItemQuantity, setListItemQuantity] = useState("");
     const [listItemUnit, setListItemUnit] = useState("");
+    const [listValidated, setListValidated] = useState(false);
+
+    useEffect(() => {
+        if (
+            listItemName.length > 0 &&
+            listItemQuantity.length > 0 &&
+            listItemUnit
+        ) {
+            setListValidated(true);
+        }
+    }, [listItemName, listItemQuantity, listItemUnit]);
 
     const addToList = async () => {
-        const item = {
-            name: listItemName,
-            quantity: listItemQuantity,
-            unit: listItemUnit,
-        };
-        await addItemToList(item);
-        setListItemName("");
-        setListItemQuantity("");
-        setListItemUnit("");
+        if (listValidated) {
+            const item = {
+                name: listItemName,
+                quantity: listItemQuantity,
+                unit: listItemUnit,
+            };
+            await addItemToList(item);
+            setListItemName("");
+            setListItemQuantity("");
+            setListItemUnit("");
+            setListValidated(false);
+        }
     };
     return (
         <View style={styles.inputFieldsContainer}>
@@ -33,6 +47,7 @@ export const GrocerieListInputs = ({ addItemToList }) => {
                 value={listItemName}
                 placeholder="Grocery"
                 keyboardType="ascii-capable"
+                autoFocus={autoFocus}
             />
 
             <View style={styles.amountContainer}>
@@ -49,10 +64,20 @@ export const GrocerieListInputs = ({ addItemToList }) => {
                     listItemUnit={listItemUnit}
                 />
                 <TouchableOpacity
+                    activeOpacity={false}
                     onPress={addToList}
-                    style={styles.addListItemButtonView}
+                    style={[
+                        styles.addListItemButtonViewActive,
+                        !listValidated && styles.addListItemButtonViewInactive,
+                    ]}
                 >
-                    <Text style={styles.addListItemButtonText}>
+                    <Text
+                        style={[
+                            styles.addListItemButtonTextActive,
+                            !listValidated &&
+                                styles.addListItemButtonTextInactive,
+                        ]}
+                    >
                         Add to list
                     </Text>
                 </TouchableOpacity>
@@ -92,13 +117,19 @@ const styles = StyleSheet.create({
         paddingLeft: 40,
         textAlign: "center",
     },
-    addListItemButtonView: {
-        borderRadius: 6,
-        padding: 8,
+    addListItemButtonViewActive: {
+        borderRadius: theme.sizes.sm,
+        padding: theme.sizes.sm,
         backgroundColor: theme.colors.bg.orange,
     },
-    addListItemButtonText: {
+    addListItemButtonViewInactive: {
+        backgroundColor: theme.colors.bg.light,
+    },
+    addListItemButtonTextActive: {
         color: theme.colors.color.light,
         fontWeight: "bold",
+    },
+    addListItemButtonTextInactive: {
+        color: "#e5e4e2",
     },
 });

@@ -17,7 +17,6 @@ export const ListPreview = ({ list, setListItems }) => {
     };
 
     const renderNewList = ({ item }) => {
-        // console.log(item);
         return (
             <View style={styles.listItemContainer}>
                 <View style={styles.itemDataContainer}>

@@ -1,12 +1,15 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import { theme } from "../../../../../styling/index";
+import { theme } from "../../../../../../styling/index";
 
 export const ChooseMeal = ({ meal, setMeal }) => {
+    const updateRecipe = (type) => {
+        setMeal(type);
+    };
     return (
-        <View style={styles.container__meal__type}>
+        <View style={styles.container}>
             <TouchableOpacity
-                onPress={() => setMeal("Breakfast")}
+                onPress={() => updateRecipe("Breakfast")}
                 style={[
                     styles.meal__type__touch,
                     meal === "Breakfast" && styles.choosenMeal,
@@ -19,12 +22,12 @@ export const ChooseMeal = ({ meal, setMeal }) => {
                     styles.meal__type__touch,
                     meal === "Lunch" && styles.choosenMeal,
                 ]}
-                onPress={() => setMeal("Lunch")}
+                onPress={() => updateRecipe("Lunch")}
             >
                 <Text style={styles.meal__type__name}>Lunch</Text>
             </TouchableOpacity>
             <TouchableOpacity
-                onPress={() => setMeal("Dinner")}
+                onPress={() => updateRecipe("Dinner")}
                 style={[
                     styles.meal__type__touch,
                     meal === "Dinner" && styles.choosenMeal,
@@ -37,21 +40,16 @@ export const ChooseMeal = ({ meal, setMeal }) => {
 };
 
 const styles = StyleSheet.create({
-    container__meal__type: {
-        flexDirection: "row",
-        justifyContent: "space-evenly",
+    container: {
+        flex: 7,
+        justifyContent: "center",
+        alignItems: "center",
     },
     meal__type__touch: {
-        padding: theme.sizes.sm,
-        marginTop: theme.sizes.sm,
-        borderRadius: theme.sizes.sm,
-        backgroundColor: theme.colors.bg.dark,
-    },
-    meal__type__name: {
-        color: theme.colors.color.light,
-        fontWeight: "bold",
+        margin: 10,
+        backgroundColor: "red",
     },
     choosenMeal: {
-        backgroundColor: theme.colors.bg.green,
+        backgroundColor: "green",
     },
 });

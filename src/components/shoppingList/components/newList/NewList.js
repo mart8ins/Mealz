@@ -2,11 +2,14 @@ import React, { useState, useEffect, useContext } from "react";
 import { ShoppingListContext } from "../../../../context/ShoppingListContext";
 import { View, StyleSheet } from "react-native";
 import uuid from "react-native-uuid";
-import { DateFormat } from "../../../../../utils/DateFormat";
+
+import { DateFormat } from "../../../../utils/DateFormat";
 
 import { GrocerieListInputs } from "../../../../shared/grocerieListInputs/GrocerieListInputs";
 import { NewListTitle } from "./components/NewListTitle";
 import { ListPreview } from "./components/ListPreview";
+
+import { Grocery, ShoppingList } from "../../../../utils/Models";
 
 export const NewList = ({ navigation }) => {
     const { listItems, setListItems, shoppingLists, setShoppingLists } =
@@ -22,27 +25,22 @@ export const NewList = ({ navigation }) => {
 
     const addItemToList = (list) => {
         if (list.name && list.quantity && list.unit) {
-            const item = {
-                id: uuid.v4(),
-                name: list.name,
-                quantity: list.quantity,
-                unit: list.unit,
-                recipe: undefined,
-                meal: undefined,
-                checked: false,
-            };
+            const item = new Grocery(
+                uuid.v4(),
+                list.name,
+                list.quantity,
+                list.unit,
+                undefined,
+                undefined,
+                false
+            );
             setListItems([...listItems, item]);
         }
     };
 
     const createList = () => {
         if (date && listItems.length > 0) {
-            const newList = {
-                listId: uuid.v4(),
-                date,
-                listItems,
-                completed: false,
-            };
+            const newList = new ShoppingList(uuid.v4(), date, listItems, false);
             setShoppingLists([...shoppingLists, newList]);
             setListItems([]);
             navigation.goBack();
@@ -56,7 +54,10 @@ export const NewList = ({ navigation }) => {
                 list={listItems}
                 createList={createList}
             />
-            <GrocerieListInputs addItemToList={addItemToList} />
+            <GrocerieListInputs
+                addItemToList={addItemToList}
+                autoFocus={true}
+            />
             <ListPreview list={listItems} setListItems={setListItems} />
         </View>
     );

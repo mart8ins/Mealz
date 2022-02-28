@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, TextInput, View, StyleSheet } from "react-native";
-import { theme } from "../../../../../styling/index";
+import { theme } from "../../../../../../styling/index";
 
 export const CaloriesPerServing = ({
     caloriesPerServing,
@@ -21,6 +21,7 @@ export const CaloriesPerServing = ({
                     placeholder="Cals"
                     keyboardType="phone-pad"
                     returnKeyType={"done"}
+                    value={caloriesPerServing}
                 />
             </View>
         </View>

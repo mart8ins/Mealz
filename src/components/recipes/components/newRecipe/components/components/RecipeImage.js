@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
 import * as ImagePicker from "expo-image-picker";
-import { theme } from "../../../../../styling/index";
+import { theme } from "../../../../../../styling/index";
 
 export const RecipeImage = ({ imageUri, setImageUri }) => {
     const getImage = async (option) => {
@@ -17,7 +17,6 @@ export const RecipeImage = ({ imageUri, setImageUri }) => {
                 : await ImagePicker.launchCameraAsync();
         setImageUri(pickedResult.uri);
     };
-    console.log(imageUri);
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Add image for recipe</Text>

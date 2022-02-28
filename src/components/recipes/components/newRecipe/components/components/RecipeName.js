@@ -1,6 +1,6 @@
 import React from "react";
 import { TextInput, View, StyleSheet } from "react-native";
-import { theme } from "../../../../../styling/index";
+import { theme } from "../../../../../../styling/index";
 
 export const RecipeName = ({ recipeName, setRecipeNameMeal }) => {
     return (
@@ -15,6 +15,7 @@ export const RecipeName = ({ recipeName, setRecipeNameMeal }) => {
                 style={styles.input}
                 placeholder="Enter recipe name"
                 blurOnSubmit={true}
+                value={recipeName}
             />
         </View>
     );

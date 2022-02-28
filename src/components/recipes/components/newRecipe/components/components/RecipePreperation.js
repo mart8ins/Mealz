@@ -1,6 +1,6 @@
 import React from "react";
-import { Text, TextInput, View, StyleSheet, Keyboard } from "react-native";
-import { theme } from "../../../../../styling/index";
+import { TextInput, View, StyleSheet, Keyboard } from "react-native";
+import { theme } from "../../../../../../styling/index";
 
 export const RecipePreperation = ({
     recipePreperation,
@@ -18,7 +18,7 @@ export const RecipePreperation = ({
                 style={styles.input}
                 placeholder="Recipe preperation"
                 multiline={true}
-                // returnKeyType={"done"}
+                value={recipePreperation}
                 onSubmitEditing={() => {
                     Keyboard.dismiss();
                 }}
