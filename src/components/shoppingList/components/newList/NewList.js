@@ -7,9 +7,9 @@ import { DateFormat } from "../../../../utils/DateFormat";
 
 import { GrocerieListInputs } from "../../../../shared/grocerieListInputs/GrocerieListInputs";
 import { NewListTitle } from "./components/NewListTitle";
-import { ListPreview } from "./components/ListPreview";
 
 import { Grocery, ShoppingList } from "../../../../utils/Models";
+import { GroceryListPreview } from "../../../../shared/groceryListPreview/GroceryListPreview";
 
 export const NewList = ({ navigation }) => {
     const { listItems, setListItems, shoppingLists, setShoppingLists } =
@@ -58,7 +58,7 @@ export const NewList = ({ navigation }) => {
                 addItemToList={addItemToList}
                 autoFocus={true}
             />
-            <ListPreview list={listItems} setListItems={setListItems} />
+            <GroceryListPreview list={listItems} setListItems={setListItems} />
         </View>
     );
 };

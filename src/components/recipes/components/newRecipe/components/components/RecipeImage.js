@@ -19,7 +19,7 @@ export const RecipeImage = ({ imageUri, setImageUri }) => {
     };
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Add image for recipe</Text>
+            <Text style={styles.title}>Choose option to add image</Text>
 
             <View style={styles.optionContainer}>
                 <Text style={styles.option} onPress={() => getImage("camera")}>
@@ -40,6 +40,8 @@ export const RecipeImage = ({ imageUri, setImageUri }) => {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
+        justifyContent: "center",
         alignItems: "center",
     },
     title: {
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
         padding: theme.sizes.md,
     },
     option: {
-        backgroundColor: theme.colors.bg.orange,
+        backgroundColor: theme.colors.bg.green,
         color: theme.colors.color.light,
         padding: theme.sizes.sm,
     },

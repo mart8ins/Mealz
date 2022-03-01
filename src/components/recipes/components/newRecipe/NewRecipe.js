@@ -4,6 +4,7 @@ import { View, StyleSheet } from "react-native";
 import { RecipeTitleForOptions } from "./components/RecipeTitleForOptions";
 import { RecipeOptionsNavButtons } from "./components/RecipeOptionsNavButtons";
 import { RecipeCreateOption } from "./components/RecipeCreateOption";
+import { RecipeProgressBar } from "./components/RecipeProgressBar";
 
 export const NewRecipe = () => {
     const [optionScreen, setOptionScreen] = useState(1);
@@ -66,10 +67,10 @@ export const NewRecipe = () => {
     const saveRecipe = () => {
         console.log("save recepti");
     };
-
     return (
         <View style={styles.container}>
             <RecipeTitleForOptions optionScreen={optionScreen} />
+            <RecipeProgressBar states={states} />
             <RecipeCreateOption
                 states={states}
                 optionScreen={optionScreen}

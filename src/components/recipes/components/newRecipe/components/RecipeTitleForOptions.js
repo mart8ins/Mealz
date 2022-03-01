@@ -30,5 +30,7 @@ const styles = StyleSheet.create({
         width: "100%",
         alignItems: "center",
     },
-    title: { color: theme.colors.color.light },
+    title: {
+        color: theme.colors.color.light,
+    },
 });

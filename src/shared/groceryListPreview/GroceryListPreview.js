@@ -6,9 +6,9 @@ import {
     StyleSheet,
     TouchableOpacity,
 } from "react-native";
-import { theme } from "../../../../../styling/index";
+import { theme } from "../../styling/index";
 
-export const ListPreview = ({ list, setListItems }) => {
+export const GroceryListPreview = ({ list, setListItems }) => {
     const removeFromListPreview = (id) => {
         const updatedList = list.filter((item) => {
             if (String(item.id) !== String(id)) return item;
@@ -59,7 +59,7 @@ export const ListPreview = ({ list, setListItems }) => {
 
 const styles = StyleSheet.create({
     listPreviewContainer: {
-        flex: 3,
+        flex: 20,
         padding: theme.sizes.sm,
     },
     listItemContainer: {

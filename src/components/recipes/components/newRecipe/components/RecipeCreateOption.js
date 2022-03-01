@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, KeyboardAvoidingView } from "react-native";
 
 import { ChooseMeal } from "./components/ChooseMeal";
 import { RecipeName } from "./components/RecipeName";
@@ -20,16 +20,20 @@ export const RecipeCreateOption = ({
                 <ChooseMeal meal={states.meal} setMeal={states.setMeal} />
             )}
             {optionScreen === 2 && (
-                <RecipeName
-                    recipeName={states.recipeName}
-                    setRecipeNameMeal={states.setRecipeNameMeal}
-                />
+                <View style={{ flex: 1 }}>
+                    <RecipeName
+                        recipeName={states.recipeName}
+                        setRecipeNameMeal={states.setRecipeNameMeal}
+                    />
+                </View>
             )}
             {optionScreen === 3 && (
-                <RecipePreperation
-                    recipePreperation={states.recipePreperation}
-                    setRecipePreperation={states.setRecipePreperation}
-                />
+                <KeyboardAvoidingView behavior={"height"} style={{ flex: 1 }}>
+                    <RecipePreperation
+                        recipePreperation={states.recipePreperation}
+                        setRecipePreperation={states.setRecipePreperation}
+                    />
+                </KeyboardAvoidingView>
             )}
             {optionScreen === 4 && (
                 <CaloriesPerServing
@@ -47,6 +51,8 @@ export const RecipeCreateOption = ({
                 <RecipeIngredients
                     recipeGroceries={states.recipeGroceries}
                     setRecipeGroceries={states.setRecipeGroceries}
+                    recipeName={states.recipeName}
+                    meal={states.meal}
                 />
             )}
             {optionScreen === 7 && canPreview && (
@@ -58,6 +64,6 @@ export const RecipeCreateOption = ({
 
 const styles = StyleSheet.create({
     container: {
-        flex: 8,
+        flex: 12,
     },
 });

@@ -15,7 +15,14 @@ export const ChooseMeal = ({ meal, setMeal }) => {
                     meal === "Breakfast" && styles.choosenMeal,
                 ]}
             >
-                <Text style={styles.meal__type__name}>Breakfast</Text>
+                <Text
+                    style={[
+                        styles.meal__type__name,
+                        meal === "Breakfast" && styles.choosenMealName,
+                    ]}
+                >
+                    Breakfast
+                </Text>
             </TouchableOpacity>
             <TouchableOpacity
                 style={[
@@ -24,7 +31,14 @@ export const ChooseMeal = ({ meal, setMeal }) => {
                 ]}
                 onPress={() => updateRecipe("Lunch")}
             >
-                <Text style={styles.meal__type__name}>Lunch</Text>
+                <Text
+                    style={[
+                        styles.meal__type__name,
+                        meal === "Lunch" && styles.choosenMealName,
+                    ]}
+                >
+                    Lunch
+                </Text>
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => updateRecipe("Dinner")}
@@ -33,7 +47,14 @@ export const ChooseMeal = ({ meal, setMeal }) => {
                     meal === "Dinner" && styles.choosenMeal,
                 ]}
             >
-                <Text style={styles.meal__type__name}>Dinner</Text>
+                <Text
+                    style={[
+                        styles.meal__type__name,
+                        meal === "Dinner" && styles.choosenMealName,
+                    ]}
+                >
+                    Dinner
+                </Text>
             </TouchableOpacity>
         </View>
     );
@@ -46,10 +67,20 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     meal__type__touch: {
-        margin: 10,
-        backgroundColor: "red",
+        margin: 30,
+        backgroundColor: theme.colors.bg.light,
+        width: 200,
+    },
+    meal__type__name: {
+        color: theme.colors.color.dark,
+        textAlign: "center",
+        fontSize: theme.sizes.xl,
+        padding: theme.sizes.sm,
     },
     choosenMeal: {
-        backgroundColor: "green",
+        backgroundColor: theme.colors.bg.green,
+    },
+    choosenMealName: {
+        color: theme.colors.color.light,
     },
 });
