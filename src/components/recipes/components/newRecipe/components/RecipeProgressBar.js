@@ -4,14 +4,6 @@ import { theme } from "../../../../../styling/index";
 
 export const RecipeProgressBar = ({ states }) => {
     const [progress, setProgress] = useState(0);
-    const [statesArray, setStatesArray] = useState([
-        states.meal,
-        states.recipeName,
-        states.recipePreperation,
-        states.caloriesPerServing,
-        states.imageUri,
-        states.recipeGroceries,
-    ]);
 
     useEffect(() => {
         let track = 0;
@@ -27,11 +19,11 @@ export const RecipeProgressBar = ({ states }) => {
     return (
         <View>
             {progress === 6 ? (
-                <Text style={[styles.ready, styles.status]}>
+                <Text style={[styles.ready, styles.statusFor]}>
                     Recipe ready for preview
                 </Text>
             ) : (
-                <Text style={[styles.progress, styles.status]}>
+                <Text style={[styles.progress, styles.statusFor]}>
                     Your recipe is ready for {progress}/6
                 </Text>
             )}
@@ -40,10 +32,10 @@ export const RecipeProgressBar = ({ states }) => {
 };
 
 const styles = StyleSheet.create({
-    status: {
+    statusFor: {
         textAlign: "center",
         fontWeight: "bold",
-        padding: theme.sizes.sm,
+        padding: 5,
     },
     ready: {
         backgroundColor: theme.colors.bg.green,
@@ -54,12 +46,3 @@ const styles = StyleSheet.create({
         color: theme.colors.color.light,
     },
 });
-
-// const statesArray = [
-//     states.meal,
-//     states.recipeName,
-//     states.recipePreperation,
-//     states.caloriesPerServing,
-//     states.imageUri,
-//     states.recipeGroceries,
-// ];

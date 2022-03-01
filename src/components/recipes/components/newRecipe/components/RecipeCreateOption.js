@@ -7,7 +7,7 @@ import { RecipePreperation } from "./components/RecipePreperation";
 import { CaloriesPerServing } from "./components/CaloriesPerServing";
 import { RecipeImage } from "./components/RecipeImage";
 import { RecipeIngredients } from "./components/RecipeIngredients";
-import { RecipePreview } from "./components/RecipePreview";
+import { RecipePreview } from "./components/recipePreview/RecipePreview";
 
 export const RecipeCreateOption = ({
     optionScreen = 1,

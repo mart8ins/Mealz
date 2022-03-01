@@ -43,7 +43,7 @@ export const ShoppingListContainer = ({ navigation }) => {
                     </View>
                     <Text
                         style={[
-                            styles.status,
+                            styles.statusCh,
                             item.completed
                                 ? styles.statusCompleted
                                 : styles.statusPending,
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
         margin: 0,
         padding: theme.sizes.sm,
     },
-    status: {
+    statusCh: {
         fontSize: theme.sizes.md,
     },
     statusCompleted: {
