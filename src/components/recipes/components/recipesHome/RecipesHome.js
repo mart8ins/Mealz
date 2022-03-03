@@ -12,10 +12,13 @@ export const RecipesHome = ({ navigation }) => {
 
     const getAllRecipes = async () => {
         try {
+            // await AsyncStorage.removeItem("recipes");
             const store = await AsyncStorage.getItem("recipes");
-            const recipesParsed = JSON.parse(store);
-            if (recipesParsed.length > 0) {
-                setRecipes(recipesParsed);
+            if (store !== null) {
+                const recipesParsed = JSON.parse(store);
+                if (recipesParsed.length > 0) {
+                    setRecipes(recipesParsed);
+                }
             }
         } catch (e) {
             console.log(e);

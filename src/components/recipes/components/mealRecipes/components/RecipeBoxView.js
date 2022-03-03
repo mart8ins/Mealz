@@ -14,9 +14,7 @@ export const RecipeBoxView = ({ item, navigation }) => {
                     style={styles.image}
                     source={{ uri: item.imageUri }}
                 />
-                <Text style={styles.title}>
-                    {item.recipeName}caloriesPerServing
-                </Text>
+                <Text style={styles.title}>{item.recipeName}</Text>
                 <Text style={styles.calories}>
                     Per portion{" "}
                     <Text style={styles.cal__number}>
