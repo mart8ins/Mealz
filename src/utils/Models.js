@@ -23,19 +23,19 @@ export class Recipe {
     constructor(
         recipeId,
         meal,
-        name,
-        image,
-        preperation,
-        calPerServing,
-        ingredients
+        recipeName,
+        recipePreperation,
+        caloriesPerServing,
+        imageUri,
+        recipeGroceries
     ) {
         this.recipeId = recipeId;
         this.meal = meal;
-        this.name = name;
-        this.preperation = preperation;
-        this.calPerServing = calPerServing;
-        this.image = image;
-        this.ingredients = ingredients;
+        this.recipeName = recipeName;
+        this.recipePreperation = recipePreperation;
+        this.caloriesPerServing = caloriesPerServing;
+        this.imageUri = imageUri;
+        this.recipeGroceries = recipeGroceries;
     }
 }
 

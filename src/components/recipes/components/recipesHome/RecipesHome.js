@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { View, StyleSheet } from "react-native";
 import { NewContentButton } from "../../../../shared/newContentButton/NewContentButton";
 import { MealType } from "./components/MealType";
 import { theme } from "../../../../styling/index";
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { RecipesContext } from "../../../../context/RecipesContext";
+
 export const RecipesHome = ({ navigation }) => {
+    const { recipes, setRecipes } = useContext(RecipesContext);
+
+    const getAllRecipes = async () => {
+        try {
+            const store = await AsyncStorage.getItem("recipes");
+            const recipesParsed = JSON.parse(store);
+            if (recipesParsed.length > 0) {
+                setRecipes(recipesParsed);
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+    useEffect(() => {
+        getAllRecipes();
+    }, []);
+
     return (
         <View style={styles.container}>
             <NewContentButton

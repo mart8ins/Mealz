@@ -13,8 +13,10 @@ export const ShoppingContextProvider = ({ children }) => {
 
     // UPDATE STORAGE AFTER EVERY NEW SHOPPING LIST IS ADDED
     const updateShoppingListStorage = async () => {
-        const store = JSON.stringify(shoppingLists);
-        await AsyncStorage.setItem("shoppingLists", store);
+        if (shoppingLists.length > 0) {
+            const store = JSON.stringify(shoppingLists);
+            await AsyncStorage.setItem("shoppingLists", store);
+        }
     };
 
     return (

@@ -1,17 +1,11 @@
 import React from "react";
-import {
-    Text,
-    View,
-    FlatList,
-    StyleSheet,
-    TouchableOpacity,
-} from "react-native";
+import { Text, FlatList, StyleSheet, TouchableOpacity } from "react-native";
 import { theme } from "../../../../../styling";
 
 const meals = [
-    { name: "Breakfast", id: "breakfast" },
-    { name: "Lunch", id: "lunch" },
-    { name: "Dinner", id: "dinner" },
+    { name: "Breakfast", id: "Breakfast" },
+    { name: "Lunch", id: "Lunch" },
+    { name: "Dinner", id: "Dinner" },
 ];
 
 export const MealType = ({ navigation }) => {

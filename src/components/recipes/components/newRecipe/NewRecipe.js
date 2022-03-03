@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { View, StyleSheet } from "react-native";
+import { Recipe } from "../../../../utils/Models";
+import uuid from "react-native-uuid";
 
 import { RecipeTitleForOptions } from "./components/RecipeTitleForOptions";
 import { RecipeOptionsNavButtons } from "./components/RecipeOptionsNavButtons";
 import { RecipeCreateOption } from "./components/RecipeCreateOption";
 import { RecipeProgressBar } from "./components/RecipeProgressBar";
+import { RecipesContext } from "../../../../context/RecipesContext";
 
-export const NewRecipe = () => {
+export const NewRecipe = ({ navigation }) => {
+    const { recipes, setRecipes } = useContext(RecipesContext);
+
     const [optionScreen, setOptionScreen] = useState(1);
     const [canPreview, setCanPreview] = useState(false);
 
@@ -36,7 +41,6 @@ export const NewRecipe = () => {
         recipeGroceries,
         setRecipeGroceries,
     };
-
     useEffect(() => {
         if (
             meal &&
@@ -65,7 +69,19 @@ export const NewRecipe = () => {
     }, [error]);
 
     const saveRecipe = () => {
-        console.log("save recepti");
+        if (canPreview) {
+            const recipeToSave = new Recipe(
+                uuid.v4(),
+                meal,
+                recipeName,
+                recipePreperation,
+                caloriesPerServing,
+                imageUri,
+                recipeGroceries
+            );
+            setRecipes([...recipes, recipeToSave]);
+            navigation.navigate("All recipes");
+        }
     };
     return (
         <View style={styles.container}>

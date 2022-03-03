@@ -19,67 +19,70 @@ import { theme } from "./src/styling/index";
 
 // CONTEXT
 import { ShoppingContextProvider } from "./src/context/ShoppingListContext";
+import { RecipesContextProvider } from "./src/context/RecipesContext";
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
     return (
         <>
-            <ShoppingContextProvider>
-                <SafeAreaView style={{ flex: 1 }}>
-                    <NavigationContainer>
-                        <Tab.Navigator
-                            initialRouteName="Shopping list"
-                            screenOptions={{
-                                tabBarActiveTintColor:
-                                    theme.colors.color.navigation,
-                                headerShown: false,
-                            }}
-                        >
-                            <Tab.Screen
-                                name="Home"
-                                component={HomeTab}
-                                options={{
-                                    tabBarIcon: ({ color, size }) => (
-                                        <Ionicons
-                                            name="ios-home"
-                                            size={size}
-                                            color={color}
-                                        />
-                                    ),
+            <RecipesContextProvider>
+                <ShoppingContextProvider>
+                    <SafeAreaView style={{ flex: 1 }}>
+                        <NavigationContainer>
+                            <Tab.Navigator
+                                initialRouteName="Shopping list"
+                                screenOptions={{
+                                    tabBarActiveTintColor:
+                                        theme.colors.color.navigation,
+                                    headerShown: false,
                                 }}
-                            />
+                            >
+                                <Tab.Screen
+                                    name="Home"
+                                    component={HomeTab}
+                                    options={{
+                                        tabBarIcon: ({ color, size }) => (
+                                            <Ionicons
+                                                name="ios-home"
+                                                size={size}
+                                                color={color}
+                                            />
+                                        ),
+                                    }}
+                                />
 
-                            <Tab.Screen
-                                name="Shopping list"
-                                component={ShoppingListTab}
-                                options={{
-                                    tabBarIcon: ({ color, size }) => (
-                                        <FontAwesome
-                                            name="list-ul"
-                                            size={size}
-                                            color={color}
-                                        />
-                                    ),
-                                }}
-                            />
-                            <Tab.Screen
-                                name="Recipes"
-                                component={RecipesTab}
-                                options={{
-                                    tabBarIcon: ({ color, size }) => (
-                                        <FontAwesome
-                                            name="book"
-                                            size={size}
-                                            color={color}
-                                        />
-                                    ),
-                                }}
-                            />
-                        </Tab.Navigator>
-                    </NavigationContainer>
-                </SafeAreaView>
-            </ShoppingContextProvider>
+                                <Tab.Screen
+                                    name="Shopping list"
+                                    component={ShoppingListTab}
+                                    options={{
+                                        tabBarIcon: ({ color, size }) => (
+                                            <FontAwesome
+                                                name="list-ul"
+                                                size={size}
+                                                color={color}
+                                            />
+                                        ),
+                                    }}
+                                />
+                                <Tab.Screen
+                                    name="Recipes"
+                                    component={RecipesTab}
+                                    options={{
+                                        tabBarIcon: ({ color, size }) => (
+                                            <FontAwesome
+                                                name="book"
+                                                size={size}
+                                                color={color}
+                                            />
+                                        ),
+                                    }}
+                                />
+                            </Tab.Navigator>
+                        </NavigationContainer>
+                    </SafeAreaView>
+                </ShoppingContextProvider>
+            </RecipesContextProvider>
 
             <StatusBar status="auto" />
         </>

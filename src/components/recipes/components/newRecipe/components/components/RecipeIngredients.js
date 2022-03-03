@@ -21,7 +21,6 @@ export const RecipeIngredients = ({
                 meal,
                 false
             );
-            console.log(gro);
             setRecipeGroceries([...recipeGroceries, gro]);
         }
     };
