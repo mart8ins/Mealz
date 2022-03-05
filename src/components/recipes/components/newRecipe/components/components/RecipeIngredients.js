@@ -1,7 +1,7 @@
 import React from "react";
 import uuid from "react-native-uuid";
 import { GroceriesListInputs } from "../../../../../../shared/groceries/GroceriesListInputs";
-import { GroceryListPreview } from "../../../../../../shared/groceries/GroceryListPreview";
+import { GroceryListCustom } from "../../../../../../shared/groceries/GroceryListCustom";
 import { Grocery } from "../../../../../../utils/Models";
 
 export const RecipeIngredients = ({
@@ -30,8 +30,8 @@ export const RecipeIngredients = ({
                 addItemToList={addItemToList}
                 autoFocus={false}
             />
-            <GroceryListPreview
-                list={recipeGroceries}
+            <GroceryListCustom
+                groceryList={recipeGroceries}
                 setListItems={setRecipeGroceries}
             />
         </>

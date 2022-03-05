@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import { ShoppingListContext } from "../../../../context/ShoppingListContext";
 import { NewListTitle } from "../newList/components/NewListTitle";
-import { ListItems } from "./components/ListItems";
+import { GroceryListCustom } from "../../../../shared/groceries/GroceryListCustom";
 
 export const ShoppingList = ({ route, navigation }) => {
     const [deleteConfirm, setDeleteConfirm] = useState(false);
@@ -44,7 +44,7 @@ export const ShoppingList = ({ route, navigation }) => {
             />
 
             <View style={styles.listContainer}>
-                <ListItems
+                <GroceryListCustom
                     groceryList={listData.listItems}
                     listId={listData.listId}
                 />

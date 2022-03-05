@@ -9,7 +9,7 @@ import { GroceriesListInputs } from "../../../../shared/groceries/GroceriesListI
 import { NewListTitle } from "./components/NewListTitle";
 
 import { Grocery, ShoppingList } from "../../../../utils/Models";
-import { GroceryListPreview } from "../../../../shared/groceries/GroceryListPreview";
+import { GroceryListCustom } from "../../../../shared/groceries/GroceryListCustom";
 
 export const NewList = ({ navigation }) => {
     const { listItems, setListItems, shoppingLists, setShoppingLists } =
@@ -58,7 +58,10 @@ export const NewList = ({ navigation }) => {
                 addItemToList={addItemToList}
                 autoFocus={true}
             />
-            <GroceryListPreview list={listItems} setListItems={setListItems} />
+            <GroceryListCustom
+                groceryList={listItems}
+                setListItems={setListItems}
+            />
         </View>
     );
 };
