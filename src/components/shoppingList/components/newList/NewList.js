@@ -5,11 +5,11 @@ import uuid from "react-native-uuid";
 
 import { DateFormat } from "../../../../utils/DateFormat";
 
-import { GrocerieListInputs } from "../../../../shared/grocerieListInputs/GrocerieListInputs";
+import { GroceriesListInputs } from "../../../../shared/groceries/GroceriesListInputs";
 import { NewListTitle } from "./components/NewListTitle";
 
 import { Grocery, ShoppingList } from "../../../../utils/Models";
-import { GroceryListPreview } from "../../../../shared/groceryListPreview/GroceryListPreview";
+import { GroceryListPreview } from "../../../../shared/groceries/GroceryListPreview";
 
 export const NewList = ({ navigation }) => {
     const { listItems, setListItems, shoppingLists, setShoppingLists } =
@@ -54,7 +54,7 @@ export const NewList = ({ navigation }) => {
                 list={listItems}
                 createList={createList}
             />
-            <GrocerieListInputs
+            <GroceriesListInputs
                 addItemToList={addItemToList}
                 autoFocus={true}
             />

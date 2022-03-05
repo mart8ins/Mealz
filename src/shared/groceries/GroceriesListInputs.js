@@ -9,7 +9,7 @@ import {
 import { theme } from "../../styling/index";
 import { UnitSelector } from "../../utils/UnitSelector";
 
-export const GrocerieListInputs = ({ addItemToList, autoFocus }) => {
+export const GroceriesListInputs = ({ addItemToList, autoFocus }) => {
     const [listItemName, setListItemName] = useState("");
     const [listItemQuantity, setListItemQuantity] = useState("");
     const [listItemUnit, setListItemUnit] = useState("");

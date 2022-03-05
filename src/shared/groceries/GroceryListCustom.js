@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { theme } from "../../styling/index";
 
-export const GroceryListPreview = ({ list, setListItems }) => {
+export const GroceryListCustom = ({ list, setListItems }) => {
     const removeFromListPreview = (id) => {
         const updatedList = list.filter((item) => {
             if (String(item.id) !== String(id)) return item;
@@ -28,6 +28,7 @@ export const GroceryListPreview = ({ list, setListItems }) => {
                         <Text style={styles.data}>{item.unit}</Text>
                     </View>
                 </View>
+
                 <TouchableOpacity
                     style={styles.deleteListItem}
                     onPress={() => {

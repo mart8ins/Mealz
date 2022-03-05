@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { View, StyleSheet } from "react-native";
-import { NewContentButton } from "../../../../shared/newContentButton/NewContentButton";
+import { NewContentButton } from "../../../../shared/buttons/NewContentButton";
 import { MealType } from "./components/MealType";
 import { theme } from "../../../../styling/index";
 

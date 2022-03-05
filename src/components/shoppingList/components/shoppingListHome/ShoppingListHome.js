@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { theme } from "../../../../styling";
-import { NewContentButton } from "../../../../shared/newContentButton/NewContentButton";
+import { NewContentButton } from "../../../../shared/buttons/NewContentButton";
 import { ShoppingListContainer } from "./components/ShoppingListContainer";
 
 export const ShoppingListHome = ({ navigation }) => {
