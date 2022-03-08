@@ -1,25 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
 import { theme } from "../../../../../../../../styling/index";
+import { CreateNewRecipeContext } from "../../../../../../../../context/CreateNewRecipeContext";
 
-export const RecipeData = ({ data }) => {
+export const RecipeData = () => {
+    const {
+        meal,
+        recipeName,
+        recipePreperation,
+        caloriesPerServing,
+        imageUri,
+    } = useContext(CreateNewRecipeContext);
+
     return (
         <View style={{ flex: 1 }}>
             <View style={{ position: "relative" }}>
                 <Image
-                    source={{ uri: data.imageUri }}
+                    source={{ uri: imageUri }}
                     resizeMode="cover"
                     style={styles.image}
                 />
-                <Text style={[styles.textOnImage, styles.meal]}>
-                    {data.meal}
-                </Text>
+                <Text style={[styles.textOnImage, styles.meal]}>{meal}</Text>
                 <Text style={[styles.textOnImage, styles.recipeName]}>
-                    {data.recipeName}
+                    {recipeName}
                 </Text>
                 <Text style={[styles.textOnImage, styles.caloriesPerServing]}>
                     <Text style={styles.caloriesNumber}>
-                        {data.caloriesPerServing}
+                        {caloriesPerServing}
                     </Text>{" "}
                     calories
                 </Text>
@@ -30,7 +37,7 @@ export const RecipeData = ({ data }) => {
                     How to make...
                 </Text>
                 <Text style={styles.recipePreperation__instructions}>
-                    {data.recipePreperation}
+                    {recipePreperation}
                 </Text>
             </View>
 

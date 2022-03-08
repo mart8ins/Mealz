@@ -12,14 +12,16 @@ export const RecipeIngredients = ({
 }) => {
     const addItemToList = (item) => {
         if (item.name && item.quantity && item.unit) {
+            let n = Number(item.quantity);
             const gro = new Grocery(
                 uuid.v4(),
                 item.name,
-                item.quantity,
+                n,
                 item.unit,
                 recipeName,
                 meal,
-                false
+                false,
+                1
             );
             setRecipeGroceries([...recipeGroceries, gro]);
         }

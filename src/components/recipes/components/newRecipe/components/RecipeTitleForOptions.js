@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { theme } from "../../../../../styling/index";
+import { CreateNewRecipeContext } from "../../../../../context/CreateNewRecipeContext";
 
-export const RecipeTitleForOptions = ({ optionScreen }) => {
+export const RecipeTitleForOptions = () => {
+    const { optionScreen } = useContext(CreateNewRecipeContext);
     const [title, setTitle] = useState("");
 
     useEffect(() => {

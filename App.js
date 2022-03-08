@@ -18,8 +18,8 @@ import { HomeTab } from "./src/components/home/Home.tab";
 import { theme } from "./src/styling/index";
 
 // CONTEXT
-import { ShoppingContextProvider } from "./src/context/ShoppingListContext";
 import { RecipesContextProvider } from "./src/context/RecipesContext";
+import { CreateNewRecipeProvider } from "./src/context/CreateNewRecipeContext";
 
 const Tab = createBottomTabNavigator();
 
@@ -27,7 +27,7 @@ export default function App() {
     return (
         <>
             <RecipesContextProvider>
-                <ShoppingContextProvider>
+                <CreateNewRecipeProvider>
                     <SafeAreaView style={{ flex: 1 }}>
                         <NavigationContainer>
                             <Tab.Navigator
@@ -81,7 +81,7 @@ export default function App() {
                             </Tab.Navigator>
                         </NavigationContainer>
                     </SafeAreaView>
-                </ShoppingContextProvider>
+                </CreateNewRecipeProvider>
             </RecipesContextProvider>
 
             <StatusBar status="auto" />

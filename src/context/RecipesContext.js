@@ -7,18 +7,27 @@ export const RecipesContextProvider = ({ children }) => {
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
+        getAllRecipes();
+    }, []);
+    const getAllRecipes = async () => {
+        // await AsyncStorage.removeItem("recipes");
+        const store = await AsyncStorage.getItem("recipes");
+        if (store !== null) {
+            const recipesParsed = JSON.parse(store);
+            if (recipesParsed.length > 0) {
+                setRecipes(recipesParsed);
+            }
+        }
+    };
+    useEffect(() => {
         updateRecipes();
     }, [recipes, setRecipes]);
 
     // UPDATE STORAGE
     const updateRecipes = async () => {
-        try {
-            if (recipes.length > 0) {
-                const store = await JSON.stringify(recipes);
-                await AsyncStorage.setItem("recipes", store);
-            }
-        } catch (e) {
-            console.log(e);
+        if (recipes.length > 0) {
+            const store = await JSON.stringify(recipes);
+            await AsyncStorage.setItem("recipes", store);
         }
     };
 

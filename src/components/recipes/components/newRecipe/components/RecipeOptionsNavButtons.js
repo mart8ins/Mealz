@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { theme } from "../../../../../styling/index";
+import { CreateNewRecipeContext } from "../../../../../context/CreateNewRecipeContext";
 
-export const RecipeOptionsNavButtons = ({
-    optionScreen,
-    setOptionScreen,
-    canPreview,
-    saveRecipe,
-}) => {
+export const RecipeOptionsNavButtons = ({ saveRecipe }) => {
+    const { optionScreen, setOptionScreen, canPreview } = useContext(
+        CreateNewRecipeContext
+    );
     return (
         <View style={styles.container}>
             {optionScreen > 1 && (

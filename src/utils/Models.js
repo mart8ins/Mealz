@@ -1,5 +1,5 @@
 export class Grocery {
-    constructor(id, name, quantity, unit, recipe, meal, checked) {
+    constructor(id, name, quantity, unit, recipe, meal, checked, portions) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
@@ -7,6 +7,7 @@ export class Grocery {
         this.recipe = recipe;
         this.meal = meal;
         this.checked = checked;
+        this.portions = portions;
     }
 }
 

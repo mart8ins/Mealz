@@ -1,20 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { theme } from "../../../../../styling/index";
+import { CreateNewRecipeContext } from "../../../../../context/CreateNewRecipeContext";
 
-export const RecipeProgressBar = ({ states }) => {
+export const RecipeProgressBar = () => {
+    const {
+        meal,
+        recipeName,
+        recipePreperation,
+        caloriesPerServing,
+        imageUri,
+        recipeGroceries,
+    } = useContext(CreateNewRecipeContext);
+
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
         let track = 0;
-        states.meal && track++;
-        states.recipeName && track++;
-        states.recipePreperation && track++;
-        states.caloriesPerServing && track++;
-        states.imageUri && track++;
-        states.recipeGroceries.length > 0 && track++;
+        meal && track++;
+        recipeName && track++;
+        recipePreperation && track++;
+        caloriesPerServing && track++;
+        imageUri && track++;
+        recipeGroceries.length > 0 && track++;
         setProgress(track);
-    }, [states]);
+    }, [
+        meal,
+        recipeName,
+        recipePreperation,
+        caloriesPerServing,
+        imageUri,
+        recipeGroceries,
+    ]);
 
     return (
         <View>
