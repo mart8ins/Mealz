@@ -12,6 +12,17 @@ export const CreateNewRecipeProvider = ({ children }) => {
     const [imageUri, setImageUri] = useState(undefined);
     const [recipeGroceries, setRecipeGroceries] = useState([]);
 
+    const clearStates = () => {
+        setOptionScreen(1);
+        setCanPreview(false);
+        setMeal(undefined);
+        setRecipeNameMeal("");
+        setRecipePreperation("");
+        setCaloriesPerServing(undefined);
+        setImageUri(undefined);
+        setRecipeGroceries([]);
+    };
+
     useEffect(() => {
         if (
             meal &&
@@ -52,6 +63,7 @@ export const CreateNewRecipeProvider = ({ children }) => {
                 setImageUri,
                 recipeGroceries,
                 setRecipeGroceries,
+                clearStates,
             }}
         >
             {children}

@@ -1,12 +1,42 @@
 import React, { useContext } from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { theme } from "../../../../../styling/index";
+import { Recipe } from "../../../../../utils/Models";
+import uuid from "react-native-uuid";
 import { CreateNewRecipeContext } from "../../../../../context/CreateNewRecipeContext";
+import { RecipesContext } from "../../../../../context/RecipesContext";
 
-export const RecipeOptionsNavButtons = ({ saveRecipe }) => {
-    const { optionScreen, setOptionScreen, canPreview } = useContext(
-        CreateNewRecipeContext
-    );
+export const RecipeOptionsNavButtons = ({ navigation }) => {
+    const {
+        optionScreen,
+        setOptionScreen,
+        canPreview,
+        meal,
+        recipeName,
+        recipePreperation,
+        caloriesPerServing,
+        imageUri,
+        recipeGroceries,
+        clearStates,
+    } = useContext(CreateNewRecipeContext);
+    const { recipes, setRecipes } = useContext(RecipesContext);
+
+    const saveRecipe = () => {
+        if (canPreview) {
+            const recipeToSave = new Recipe(
+                uuid.v4(),
+                meal,
+                recipeName,
+                recipePreperation,
+                caloriesPerServing,
+                imageUri,
+                recipeGroceries
+            );
+            setRecipes([...recipes, recipeToSave]);
+            clearStates();
+            navigation.navigate("Choose meal");
+        }
+    };
     return (
         <View style={styles.container}>
             {optionScreen > 1 && (
@@ -52,11 +82,7 @@ export const RecipeOptionsNavButtons = ({ saveRecipe }) => {
             )}
 
             {optionScreen === 7 && (
-                <TouchableOpacity
-                    onPress={() => {
-                        saveRecipe();
-                    }}
-                >
+                <TouchableOpacity onPress={saveRecipe}>
                     <View style={styles.btnContainer}>
                         <Text style={styles.btnText}>Save</Text>
                     </View>
