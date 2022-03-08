@@ -20,7 +20,7 @@ export const MealRecipes = ({ route, navigation }) => {
             (recipe) => recipe.meal === route.params.mealType
         );
         setRecipesForMeal(filtered);
-    }, [route]);
+    }, [route.params.mealType]);
 
     const renderMealRecipes = ({ item }) => {
         return (
@@ -28,7 +28,9 @@ export const MealRecipes = ({ route, navigation }) => {
                 <TouchableOpacity
                     style={styles.touchable}
                     onPress={() => {
-                        navigation.navigate("Recipe", { recipe: item });
+                        navigation.navigate("Recipe", {
+                            recipeId: item.recipeId,
+                        });
                     }}
                 >
                     <Image

@@ -1,18 +1,35 @@
 import React, { useContext, useState, useEffect } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { theme } from "../../../../../../styling";
+import { ShopListContext } from "../../../../../../context/ShopListContext";
 
-export const RecipeFooter = ({ recipe, navigation }) => {
-    // FUNCTIONS
+export const RecipeFooter = ({
+    increaseGroceriesInShoppingList,
+    sendGroceriesToShoppingList,
+    addedToShoppingListTimes,
+}) => {
+    // const { newShoppingList, setNewShoppingList } = useContext(ShopListContext);
+
+    // const [groceryListFromRecipe, setGroceryListFromRecipe] = useState([]);
+    // const [newShoppingListREF, setNewShoppingListREF] = useState([]);
+    // useEffect(() => {
+    //     setGroceryListFromRecipe(recipeGroceries);
+    //     setNewShoppingListREF(newShoppingList);
+    // }, []);
+
     //  **************** SEND GROCERIES FROM RECIPE TO SHOPPING LIST
-    const sendGroceriesToShoppingList = () => {
-        console.log("Sending grocery list to shopping list");
-    };
+    // const sendGroceriesToShoppingList = () => {
+    //     setNewShoppingList([...newShoppingList, ...recipeGroceries]);
+    //     console.log("Sending grocery list to shopping list");
+    // };
 
-    //  **************** INCREASE GROCERIES IN SHOPPING LIST
-    const increaseGroceriesInShoppingList = () => {
-        console.log("Increase");
-    };
+    // //  **************** INCREASE GROCERIES IN SHOPPING LIST
+    // const increaseGroceriesInShoppingList = () => {
+    //     for (let x = 0; x < newShoppingList.length; x++) {
+    //         newShoppingList[x].quantity++;
+    //     }
+    //     console.log(newShoppingList);
+    // };
 
     return (
         <View style={styles.container}>
@@ -38,7 +55,10 @@ export const RecipeFooter = ({ recipe, navigation }) => {
                 style={styles.button}
                 onPress={increaseGroceriesInShoppingList}
             >
-                <Text style={styles.buttonText}>Increase portion</Text>
+                <Text style={styles.buttonText}>
+                    Increase portion
+                    {addedToShoppingListTimes > 0 && addedToShoppingListTimes}
+                </Text>
             </TouchableOpacity>
         </View>
     );

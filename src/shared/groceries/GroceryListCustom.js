@@ -8,14 +8,14 @@ import {
 } from "react-native";
 import { theme } from "../../styling/index";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-// import { ShoppingListContext } from "../../context/ShoppingListContext";
+// import { ShopListContext } from "../../context/ShopListContext";
 
 export const GroceryListCustom = ({
     groceryList = [],
     listId,
     setListItems,
 }) => {
-    // const { shoppingLists, setShoppingLists } = useContext(ShoppingListContext);
+    // const { shoppingLists, setShoppingLists } = useContext(ShopListContext);
     // const listToUpdate = [...shoppingLists];
 
     // RENDER FUNCTION FOR FLAT LIST
