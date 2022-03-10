@@ -2,22 +2,52 @@ import React, { useContext } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { theme } from "../../styling/index";
 import { ShopListContext } from "../../context/ShopListContext";
+import { CreateNewRecipeContext } from "../../context/CreateNewRecipeContext";
 
 export const NewContentButton = ({ navigation, routeTo }) => {
     const { newShoppingList } = useContext(ShopListContext);
+    const { finishYourRecipe } = useContext(CreateNewRecipeContext);
+
     const list = newShoppingList.length > 0;
-    const buttonText =
+
+    const shoppingListText =
+        routeTo === "Create list" && list ? "Finish your list" : "New list";
+
+    const recipeText =
         routeTo === "Create recipe"
-            ? "New recipe"
-            : routeTo === "Create list" && list
-            ? "Finish you list"
-            : "New list";
+            ? finishYourRecipe
+                ? "Finish you recipe"
+                : "New recipe"
+            : null;
 
     return (
         <View style={styles.buttonContainer}>
             <View style={styles.button}>
                 <TouchableOpacity onPress={() => navigation.navigate(routeTo)}>
-                    <Text style={styles.buttonText}>{buttonText}</Text>
+                    {routeTo === "Create list" && (
+                        <Text
+                            style={[
+                                styles.buttonText,
+                                routeTo === "Create list" &&
+                                    list &&
+                                    styles.pendingList,
+                            ]}
+                        >
+                            {shoppingListText}
+                        </Text>
+                    )}
+                    {routeTo === "Create recipe" && (
+                        <Text
+                            style={[
+                                styles.buttonText,
+                                routeTo === "Create recipe" &&
+                                    finishYourRecipe &&
+                                    styles.pendingRecipe,
+                            ]}
+                        >
+                            {recipeText}
+                        </Text>
+                    )}
                 </TouchableOpacity>
             </View>
         </View>
@@ -42,5 +72,11 @@ const styles = StyleSheet.create({
         color: theme.colors.color.light,
         fontWeight: "bold",
         fontSize: theme.sizes.md,
+    },
+    pendingList: {
+        color: theme.colors.color.green,
+    },
+    pendingRecipe: {
+        color: theme.colors.color.green,
     },
 });

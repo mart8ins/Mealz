@@ -12,6 +12,8 @@ export const CreateNewRecipeProvider = ({ children }) => {
     const [imageUri, setImageUri] = useState(undefined);
     const [recipeGroceries, setRecipeGroceries] = useState([]);
 
+    const [finishYourRecipe, setFinishYourRecipe] = useState(false);
+
     const clearStates = () => {
         setOptionScreen(1);
         setCanPreview(false);
@@ -24,6 +26,18 @@ export const CreateNewRecipeProvider = ({ children }) => {
     };
 
     useEffect(() => {
+        if (
+            meal ||
+            recipeName.length > 0 ||
+            recipePreperation.length > 0 ||
+            caloriesPerServing ||
+            imageUri ||
+            recipeGroceries.length > 0
+        ) {
+            setFinishYourRecipe(true);
+        } else {
+            setFinishYourRecipe(false);
+        }
         if (
             meal &&
             recipeName.length > 0 &&
@@ -64,6 +78,7 @@ export const CreateNewRecipeProvider = ({ children }) => {
                 recipeGroceries,
                 setRecipeGroceries,
                 clearStates,
+                finishYourRecipe,
             }}
         >
             {children}
