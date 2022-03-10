@@ -6,10 +6,10 @@ import { ChangePortionCountFromRecipe } from "./components/ChangePortionCountFro
 export const RecipeFooter = ({
     changeGroceriesInShoppingListPortions,
     sendGroceriesToShoppingList,
-    newShoppingList,
     recipeData,
     recipeExistsInShoppingList,
     addedToShoppingListTimes,
+    newShoppingList,
 }) => {
     return (
         <View style={styles.container}>
@@ -19,7 +19,7 @@ export const RecipeFooter = ({
                 sendGroceriesToShoppingList={sendGroceriesToShoppingList}
             />
 
-            {addedToShoppingListTimes > 0 && newShoppingList.length !== 0 && (
+            {recipeExistsInShoppingList && (
                 <ChangePortionCountFromRecipe
                     newShoppingList={newShoppingList}
                     changeGroceriesInShoppingListPortions={

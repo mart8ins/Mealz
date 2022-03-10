@@ -17,6 +17,7 @@ export const GroceryListCustom = ({
 }) => {
     // const { shoppingLists, setShoppingLists } = useContext(ShopListContext);
     // const listToUpdate = [...shoppingLists];
+    console.log(groceryList);
 
     // RENDER FUNCTION FOR FLAT LIST
     const renderNewList = ({ item }) => {

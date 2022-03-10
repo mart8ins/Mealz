@@ -16,6 +16,7 @@ export const Recipe = ({ route }) => {
         useState(false);
     const [addedToShoppingListTimes, setAddedToShoppingListTimes] = useState(0);
 
+    // FILTER OUT RECIPE DATA BY ID
     useEffect(() => {
         recipes.forEach((item) => {
             if (item.recipeId === recipeId) {
@@ -24,6 +25,7 @@ export const Recipe = ({ route }) => {
         });
     }, [recipeId]);
 
+    // CHECK IF GROCERIES FROM RECIPE EXISTS IN SHOPPING LIST ALREADY
     useEffect(() => {
         newShoppingList.forEach((grocery) => {
             if (grocery.recipe === recipeData.recipeName) {
@@ -31,36 +33,20 @@ export const Recipe = ({ route }) => {
                 setAddedToShoppingListTimes(grocery.portions);
             }
         });
-    }, [newShoppingList, setNewShoppingList, recipeData, recipeId]);
-
-    const renderGroceriesForRecipe = ({ item }) => {
-        return (
-            <View style={styles.container}>
-                <View style={styles.containerData}>
-                    <View>
-                        <Text>{item.name}</Text>
-                    </View>
-
-                    <View style={styles.quantityContainer}>
-                        <Text>{item.quantity}</Text>
-                        <Text>{item.unit}</Text>
-                    </View>
-                </View>
-            </View>
-        );
-    };
+    }, [newShoppingList, recipeData]);
 
     const sendGroceriesToShoppingList = () => {
         setNewShoppingList([...newShoppingList, ...recipeData.recipeGroceries]);
     };
 
+    // REMOVE
     const removeGroceriesFromShoppingList = (recipeName) => {
         const filtered = newShoppingList.filter((item) => {
             return item.recipe !== recipeName;
         });
-        setNewShoppingList(filtered);
         setAddedToShoppingListTimes(0);
         setRecipeExistsInShoppingList(false);
+        setNewShoppingList(filtered);
     };
 
     //  **************** CHANGE GROCERIES IN SHOPPING LIST
@@ -71,6 +57,7 @@ export const Recipe = ({ route }) => {
     ) => {
         if (action === "-" && count === 1) {
             removeGroceriesFromShoppingList(recipeName);
+            return;
         } else {
             const refs = [...newShoppingList];
             const groceries = recipeData.recipeGroceries;
@@ -98,6 +85,24 @@ export const Recipe = ({ route }) => {
             setNewShoppingList(maped);
         }
     };
+
+    const renderGroceriesForRecipe = ({ item }) => {
+        return (
+            <View style={styles.container}>
+                <View style={styles.containerData}>
+                    <View>
+                        <Text>{item.name}</Text>
+                    </View>
+
+                    <View style={styles.quantityContainer}>
+                        <Text>{item.quantity}</Text>
+                        <Text>{item.unit}</Text>
+                    </View>
+                </View>
+            </View>
+        );
+    };
+
     return (
         <View style={styles.container_top}>
             <FlatList
@@ -121,16 +126,10 @@ export const Recipe = ({ route }) => {
                         changeGroceriesInShoppingListPortions={
                             changeGroceriesInShoppingListPortions
                         }
-                        newShoppingList={newShoppingList}
                         recipeData={recipeData}
                         recipeExistsInShoppingList={recipeExistsInShoppingList}
-                        setRecipeExistsInShoppingList={
-                            setRecipeExistsInShoppingList
-                        }
                         addedToShoppingListTimes={addedToShoppingListTimes}
-                        setAddedToShoppingListTimes={
-                            setAddedToShoppingListTimes
-                        }
+                        newShoppingList={newShoppingList}
                     />
                 )}
             />

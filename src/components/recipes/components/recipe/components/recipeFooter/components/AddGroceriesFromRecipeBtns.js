@@ -9,28 +9,16 @@ export const AddGroceriesFromRecipeBtns = ({
 }) => {
     return (
         <View>
-            {newShoppingList.length === 0 && (
+            {recipeExistsInShoppingList === false && (
                 <TouchableOpacity
                     style={styles.button}
                     onPress={sendGroceriesToShoppingList}
                 >
                     <Text style={styles.buttonText}>
-                        Send groceries to new shopping list
+                        Send groceries to shopping list
                     </Text>
                 </TouchableOpacity>
             )}
-
-            {newShoppingList.length > 0 &&
-            recipeExistsInShoppingList === false ? (
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={sendGroceriesToShoppingList}
-                >
-                    <Text style={styles.buttonText}>
-                        Add to pending shopping list
-                    </Text>
-                </TouchableOpacity>
-            ) : null}
         </View>
     );
 };

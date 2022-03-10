@@ -38,6 +38,7 @@ export default function App() {
                                         tabBarActiveTintColor:
                                             theme.colors.color.navigation,
                                         headerShown: false,
+                                        unmountOnBlur: true,
                                     }}
                                 >
                                     <Tab.Screen
