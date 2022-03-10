@@ -24,6 +24,15 @@ export const Recipe = ({ route }) => {
         });
     }, [recipeId]);
 
+    useEffect(() => {
+        newShoppingList.forEach((grocery) => {
+            if (grocery.recipe === recipeData.recipeName) {
+                setRecipeExistsInShoppingList(true);
+                setAddedToShoppingListTimes(grocery.portions);
+            }
+        });
+    }, [newShoppingList, setNewShoppingList, recipeData, recipeId]);
+
     const renderGroceriesForRecipe = ({ item }) => {
         return (
             <View style={styles.container}>
@@ -51,6 +60,7 @@ export const Recipe = ({ route }) => {
         });
         setNewShoppingList(filtered);
         setAddedToShoppingListTimes(0);
+        setRecipeExistsInShoppingList(false);
     };
 
     //  **************** CHANGE GROCERIES IN SHOPPING LIST

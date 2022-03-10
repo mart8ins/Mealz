@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { theme } from "../../styling/index";
-// import { ShopListContext } from "../../context/ShopListContext";
+import { ShopListContext } from "../../context/ShopListContext";
 
 export const NewContentButton = ({ navigation, routeTo }) => {
-    // const { listItems } = useContext(ShopListContext);
-    // const list = listItems.length > 0;
+    const { newShoppingList } = useContext(ShopListContext);
+    const list = newShoppingList.length > 0;
     const buttonText =
         routeTo === "Create recipe"
             ? "New recipe"

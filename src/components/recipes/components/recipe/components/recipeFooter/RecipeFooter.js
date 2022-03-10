@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { View, StyleSheet } from "react-native";
 import { AddGroceriesFromRecipeBtns } from "./components/AddGroceriesFromRecipeBtns";
 import { ChangePortionCountFromRecipe } from "./components/ChangePortionCountFromRecipe";
@@ -9,32 +9,17 @@ export const RecipeFooter = ({
     newShoppingList,
     recipeData,
     recipeExistsInShoppingList,
-    setRecipeExistsInShoppingList,
     addedToShoppingListTimes,
-    setAddedToShoppingListTimes,
 }) => {
-    useEffect(() => {
-        newShoppingList.forEach((grocery) => {
-            if (grocery.recipe === recipeData.recipeName) {
-                setRecipeExistsInShoppingList(true);
-                setAddedToShoppingListTimes(grocery.portions);
-            } else {
-                setRecipeExistsInShoppingList(false);
-            }
-        });
-    }, [newShoppingList]);
-
     return (
         <View style={styles.container}>
-            {addedToShoppingListTimes === 0 && (
-                <AddGroceriesFromRecipeBtns
-                    newShoppingList={newShoppingList}
-                    recipeExistsInShoppingList={recipeExistsInShoppingList}
-                    sendGroceriesToShoppingList={sendGroceriesToShoppingList}
-                />
-            )}
+            <AddGroceriesFromRecipeBtns
+                newShoppingList={newShoppingList}
+                recipeExistsInShoppingList={recipeExistsInShoppingList}
+                sendGroceriesToShoppingList={sendGroceriesToShoppingList}
+            />
 
-            {addedToShoppingListTimes > 0 && (
+            {addedToShoppingListTimes > 0 && newShoppingList.length !== 0 && (
                 <ChangePortionCountFromRecipe
                     newShoppingList={newShoppingList}
                     changeGroceriesInShoppingListPortions={

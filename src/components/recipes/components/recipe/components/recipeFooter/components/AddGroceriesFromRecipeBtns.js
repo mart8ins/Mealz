@@ -21,16 +21,16 @@ export const AddGroceriesFromRecipeBtns = ({
             )}
 
             {newShoppingList.length > 0 &&
-                recipeExistsInShoppingList === false && (
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={sendGroceriesToShoppingList}
-                    >
-                        <Text style={styles.buttonText}>
-                            Add to pending shopping list
-                        </Text>
-                    </TouchableOpacity>
-                )}
+            recipeExistsInShoppingList === false ? (
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={sendGroceriesToShoppingList}
+                >
+                    <Text style={styles.buttonText}>
+                        Add to pending shopping list
+                    </Text>
+                </TouchableOpacity>
+            ) : null}
         </View>
     );
 };
