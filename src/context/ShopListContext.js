@@ -5,7 +5,7 @@ export const ShopListContext = createContext();
 
 export const ShoppingContextProvider = ({ children }) => {
     const [newShoppingList, setNewShoppingList] = useState([]);
-
+    console.log(newShoppingList);
     return (
         <ShopListContext.Provider
             value={{ newShoppingList, setNewShoppingList }}

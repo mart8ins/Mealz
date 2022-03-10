@@ -6,11 +6,14 @@ import { RecipeFooter } from "./components/recipeFooter/RecipeFooter";
 import { RecipesContext } from "../../../../context/RecipesContext";
 import { ShopListContext } from "../../../../context/ShopListContext";
 
-export const Recipe = ({ route, navigation }) => {
+export const Recipe = ({ route }) => {
     const { recipeId } = route.params;
     const { recipes } = useContext(RecipesContext);
     const { newShoppingList, setNewShoppingList } = useContext(ShopListContext);
     const [recipeData, setRecipeData] = useState({});
+
+    const [recipeExistsInShoppingList, setRecipeExistsInShoppingList] =
+        useState(false);
     const [addedToShoppingListTimes, setAddedToShoppingListTimes] = useState(0);
 
     useEffect(() => {
@@ -40,39 +43,51 @@ export const Recipe = ({ route, navigation }) => {
 
     const sendGroceriesToShoppingList = () => {
         setNewShoppingList([...newShoppingList, ...recipeData.recipeGroceries]);
-        console.log("Sending grocery list to shopping list");
-        setAddedToShoppingListTimes(1);
     };
 
-    //  **************** INCREASE GROCERIES IN SHOPPING LIST
-    const increaseGroceriesInShoppingList = () => {
-        const refs = [...newShoppingList];
-        const groceries = recipeData.recipeGroceries;
-
-        const maped = refs.map((item) => {
-            let portionUpdate = item.portions + 1;
-            let newObj = {};
-            newObj.checked = item.checked;
-            newObj.id = item.id;
-            newObj.meal = item.meal;
-            newObj.name = item.name;
-            newObj.quantity = item.quantity;
-            newObj.recipe = item.recipe;
-            newObj.unit = item.unit;
-            for (let x = 0; x < groceries.length; x++) {
-                if (groceries[x].recipe === item.recipe) {
-                    newObj.portions = portionUpdate;
-                    setAddedToShoppingListTimes(portionUpdate);
-                } else {
-                    newObj.portions = item.portions;
-                }
-            }
-            return newObj;
+    const removeGroceriesFromShoppingList = (recipeName) => {
+        const filtered = newShoppingList.filter((item) => {
+            return item.recipe !== recipeName;
         });
-        setNewShoppingList(maped);
+        setNewShoppingList(filtered);
+        setAddedToShoppingListTimes(0);
     };
 
-    console.log(newShoppingList);
+    //  **************** CHANGE GROCERIES IN SHOPPING LIST
+    const changeGroceriesInShoppingListPortions = (
+        action,
+        count,
+        recipeName
+    ) => {
+        if (action === "-" && count === 1) {
+            removeGroceriesFromShoppingList(recipeName);
+        } else {
+            const refs = [...newShoppingList];
+            const groceries = recipeData.recipeGroceries;
+
+            const maped = refs.map((item) => {
+                let portionUpdate =
+                    action === "+" ? item.portions + 1 : item.portions - 1;
+                let newObj = {};
+                newObj.checked = item.checked;
+                newObj.id = item.id;
+                newObj.meal = item.meal;
+                newObj.name = item.name;
+                newObj.quantity = item.quantity;
+                newObj.recipe = item.recipe;
+                newObj.unit = item.unit;
+                for (let x = 0; x < groceries.length; x++) {
+                    if (groceries[x].recipe === item.recipe) {
+                        newObj.portions = portionUpdate;
+                    } else {
+                        newObj.portions = item.portions;
+                    }
+                }
+                return newObj;
+            });
+            setNewShoppingList(maped);
+        }
+    };
     return (
         <View style={styles.container_top}>
             <FlatList
@@ -93,10 +108,19 @@ export const Recipe = ({ route, navigation }) => {
                         sendGroceriesToShoppingList={
                             sendGroceriesToShoppingList
                         }
-                        increaseGroceriesInShoppingList={
-                            increaseGroceriesInShoppingList
+                        changeGroceriesInShoppingListPortions={
+                            changeGroceriesInShoppingListPortions
+                        }
+                        newShoppingList={newShoppingList}
+                        recipeData={recipeData}
+                        recipeExistsInShoppingList={recipeExistsInShoppingList}
+                        setRecipeExistsInShoppingList={
+                            setRecipeExistsInShoppingList
                         }
                         addedToShoppingListTimes={addedToShoppingListTimes}
+                        setAddedToShoppingListTimes={
+                            setAddedToShoppingListTimes
+                        }
                     />
                 )}
             />
