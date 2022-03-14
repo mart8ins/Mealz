@@ -1,7 +1,7 @@
 import React from "react";
 import uuid from "react-native-uuid";
 import { GroceriesListInputs } from "../../../../../../shared/groceries/GroceriesListInputs";
-import { GroceryListCustom } from "../../../../../../shared/groceries/GroceryListCustom";
+import { GroceryListCustom } from "../../../../../../shared/groceries/GroceryListCustom/GroceryListCustom";
 import { Grocery } from "../../../../../../utils/Models";
 
 export const RecipeIngredients = ({

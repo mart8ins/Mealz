@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import { ShopListContext } from "../../../../context/ShopListContext";
 import { NewListTitle } from "../newList/components/NewListTitle";
-import { GroceryListCustom } from "../../../../shared/groceries/GroceryListCustom";
+import { GroceryListCustom } from "../../../../shared/groceries/GroceryListCustom/GroceryListCustom";
 
 export const ShoppingList = ({ route, navigation }) => {
     const [deleteConfirm, setDeleteConfirm] = useState(false);

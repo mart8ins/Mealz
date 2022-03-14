@@ -39,7 +39,7 @@ export const Recipe = ({ route }) => {
     }, [newShoppingList, recipeData]);
 
     const sendGroceriesToShoppingList = () => {
-        setNewShoppingList([...newShoppingList, ...recipeData.recipeGroceries]);
+        setNewShoppingList([...recipeData.recipeGroceries, ...newShoppingList]);
     };
 
     // REMOVE

@@ -9,7 +9,7 @@ import { GroceriesListInputs } from "../../../../shared/groceries/GroceriesListI
 import { NewListTitle } from "./components/NewListTitle";
 
 import { Grocery, ShoppingList } from "../../../../utils/Models";
-import { GroceryListCustom } from "../../../../shared/groceries/GroceryListCustom";
+import { GroceryListCustom } from "../../../../shared/groceries/GroceryListCustom/GroceryListCustom";
 
 export const NewList = ({ navigation }) => {
     const {
