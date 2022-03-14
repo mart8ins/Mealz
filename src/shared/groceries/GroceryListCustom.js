@@ -8,30 +8,31 @@ import {
 } from "react-native";
 import { theme } from "../../styling/index";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-// import { ShopListContext } from "../../context/ShopListContext";
+import { ShopListContext } from "../../context/ShopListContext";
 
-export const GroceryListCustom = ({
-    groceryList = [],
-    listId,
-    setListItems,
-}) => {
-    // const { shoppingLists, setShoppingLists } = useContext(ShopListContext);
-    // const listToUpdate = [...shoppingLists];
-    console.log(groceryList);
+export const GroceryListCustom = ({ listId }) => {
+    const {
+        newShoppingList,
+        setNewShoppingList,
+        allShoppingLists,
+        setAllShoppingLists,
+    } = useContext(ShopListContext);
+    const listToUpdateChecked = [...allShoppingLists];
 
     // RENDER FUNCTION FOR FLAT LIST
     const renderNewList = ({ item }) => {
         // REMOVE LIST ITEM FROM NOT SAVED LIST
         const removeFromListPreview = (id) => {
-            const updatedList = groceryList.filter((item) => {
+            const updatedList = newShoppingList.filter((item) => {
                 if (String(item.id) !== String(id)) return item;
             });
-            setListItems(updatedList);
+            setNewShoppingList(updatedList);
         };
+
         // UPDATE LIST AS CHECKED IN FINISHED LIST
         const updateListCheckedOption = () => {
             let listIsCompleted = true;
-            listToUpdate.forEach((list) => {
+            listToUpdateChecked.forEach((list) => {
                 if (String(list.listId) === String(listId)) {
                     list.listItems.forEach((itm) => {
                         if (String(itm.id) === String(item.id)) {
@@ -44,7 +45,7 @@ export const GroceryListCustom = ({
                     list.completed = listIsCompleted;
                 }
             });
-            setShoppingLists(listToUpdate);
+            setAllShoppingLists(listToUpdateChecked);
         };
 
         return (
@@ -88,9 +89,9 @@ export const GroceryListCustom = ({
 
     return (
         <View style={styles.container}>
-            {groceryList.length > 0 ? (
+            {newShoppingList.length > 0 ? (
                 <FlatList
-                    data={groceryList}
+                    data={newShoppingList}
                     renderItem={renderNewList}
                     keyExtractor={(item) => item.id}
                 />

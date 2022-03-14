@@ -67,10 +67,7 @@ export const NewList = ({ navigation }) => {
                 addItemToList={addItemToList}
                 autoFocus={true}
             />
-            <GroceryListCustom
-                groceryList={newShoppingList}
-                setNewShoppingList={setNewShoppingList}
-            />
+            <GroceryListCustom />
         </View>
     );
 };

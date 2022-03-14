@@ -28,7 +28,10 @@ export const Recipe = ({ route }) => {
     // CHECK IF GROCERIES FROM RECIPE EXISTS IN SHOPPING LIST ALREADY
     useEffect(() => {
         newShoppingList.forEach((grocery) => {
-            if (grocery.recipe === recipeData.recipeName) {
+            if (
+                recipeData.recipeName !== undefined &&
+                grocery.recipe === recipeData.recipeName
+            ) {
                 setRecipeExistsInShoppingList(true);
                 setAddedToShoppingListTimes(grocery.portions);
             }

@@ -34,7 +34,7 @@ export const RecipeIngredients = ({
             />
             <GroceryListCustom
                 groceryList={recipeGroceries}
-                setListItems={setRecipeGroceries}
+                updateListItems={setRecipeGroceries}
             />
         </>
     );
