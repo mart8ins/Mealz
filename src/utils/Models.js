@@ -12,9 +12,9 @@ export class Grocery {
 }
 
 export class ShoppingList {
-    constructor(listId, date, listItems, completed) {
+    constructor(listId, listTitle, listItems, completed) {
         this.listId = listId;
-        this.date = date;
+        this.listTitle = listTitle;
         this.listItems = listItems;
         this.completed = completed;
     }
@@ -39,35 +39,3 @@ export class Recipe {
         this.recipeGroceries = recipeGroceries;
     }
 }
-
-// const recipe = {
-//     recipeId: `1`,
-//     meal: "Dinner",
-//     name: "Tortilla",
-//     image: "imageeeee",
-//     preperation: "put everything together",
-//     calPerServing: "100cal",
-//     ingredients: [
-//         {
-//             id: "1",
-//             name: "Maize",
-//             quantity: "1",
-//             unit: "pc",
-//             recipe: "Tortilla",
-//         },
-//         {
-//             id: "2",
-//             name: "Pupiņas",
-//             quantity: "100",
-//             unit: "gr",
-//             recipe: "Tortilla",
-//         },
-//         {
-//             id: "3",
-//             name: "Gurkis",
-//             quantity: "1",
-//             unit: "pc",
-//             recipe: "Tortilla",
-//         },
-//     ],
-// };

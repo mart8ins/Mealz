@@ -5,6 +5,7 @@ export const ShopListContext = createContext();
 
 export const ShoppingContextProvider = ({ children }) => {
     const [newShoppingList, setNewShoppingList] = useState([]);
+    const [listTitle, setListTitle] = useState(undefined);
     const [allShoppingLists, setAllShoppingLists] = useState([]);
 
     // SET CONTEXT FOR INITIAL RENDER
@@ -40,6 +41,8 @@ export const ShoppingContextProvider = ({ children }) => {
                 setNewShoppingList,
                 allShoppingLists,
                 setAllShoppingLists,
+                listTitle,
+                setListTitle,
             }}
         >
             {children}

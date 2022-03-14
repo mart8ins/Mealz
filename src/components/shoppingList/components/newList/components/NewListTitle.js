@@ -1,17 +1,36 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    TextInput,
+} from "react-native";
 import { theme } from "../../../../../styling/index";
 
 export const NewListTitle = ({
-    date,
+    listTitle,
+    setListTitle,
     list,
     createList,
     deleteList,
     deleteConfirm,
 }) => {
     return (
-        <View style={styles.titleContainer}>
-            <Text style={styles.title}>Shopping list for {date}</Text>
+        <View style={styles.container}>
+            <View style={styles.titleCont}>
+                {deleteList && <Text style={styles.title}>{listTitle}</Text>}
+                {createList && (
+                    <TextInput
+                        style={styles.title}
+                        value={listTitle}
+                        onChangeText={setListTitle}
+                        placeholder={"Enter name for list..."}
+                        autoFocus={true}
+                    />
+                )}
+            </View>
+
             {list && list.length > 0 && (
                 <TouchableOpacity
                     onPress={createList}
@@ -35,21 +54,24 @@ export const NewListTitle = ({
 };
 
 const styles = StyleSheet.create({
-    titleContainer: {
-        // margin: 0,
-        display: "flex",
+    container: {
         flexDirection: "row",
+        justifyContent: "space-between",
+        // height: 40,
+    },
+    titleCont: {
+        backgroundColor: theme.colors.bg.light,
+        flex: 1,
     },
     title: {
-        flex: 3,
-        fontSize: theme.sizes.md,
         padding: theme.sizes.sm,
+        fontSize: theme.sizes.md,
+        color: "black",
         textAlign: "center",
-        backgroundColor: theme.colors.bg.dark,
-        color: theme.colors.color.light,
     },
     createButton: {
-        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
     },
     createText: {
         padding: theme.sizes.sm,

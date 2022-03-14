@@ -1,16 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { theme } from "../../../../styling/index";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { ShopListContext } from "../../../../context/ShopListContext";
 
-export const ListItemOptionButton = ({ listId, item }) => {
-    const {
-        newShoppingList,
-        setNewShoppingList,
-        allShoppingLists,
-        setAllShoppingLists,
-    } = useContext(ShopListContext);
+export const ListItemOptionButton = ({
+    listId,
+    item,
+    groceriesList = [],
+    setGroceriesList,
+    allShoppingLists = [],
+    setAllShoppingLists,
+}) => {
     const listToUpdateChecked = [...allShoppingLists];
 
     // UPDATE LIST AS CHECKED IN FINISHED LIST
@@ -34,10 +34,10 @@ export const ListItemOptionButton = ({ listId, item }) => {
 
     // REMOVE LIST ITEM FROM NOT SAVED LIST
     const removeFromListPreview = (id) => {
-        const updatedList = newShoppingList.filter((item) => {
+        const updatedList = groceriesList.filter((item) => {
             if (String(item.id) !== String(id)) return item;
         });
-        setNewShoppingList(updatedList);
+        setGroceriesList(updatedList);
     };
 
     return (

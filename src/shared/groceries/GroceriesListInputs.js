@@ -9,7 +9,7 @@ import {
 import { theme } from "../../styling/index";
 import { UnitSelector } from "../../utils/UnitSelector";
 
-export const GroceriesListInputs = ({ addItemToList, autoFocus }) => {
+export const GroceriesListInputs = ({ addItemToList }) => {
     const [listItemName, setListItemName] = useState("");
     const [listItemQuantity, setListItemQuantity] = useState("");
     const [listItemUnit, setListItemUnit] = useState("");
@@ -29,9 +29,10 @@ export const GroceriesListInputs = ({ addItemToList, autoFocus }) => {
         if (listValidated) {
             const item = {
                 name: listItemName,
-                quantity: listItemQuantity,
+                quantity: Number(listItemQuantity),
                 unit: listItemUnit,
             };
+
             await addItemToList(item);
             setListItemName("");
             setListItemQuantity("");
@@ -39,6 +40,7 @@ export const GroceriesListInputs = ({ addItemToList, autoFocus }) => {
             setListValidated(false);
         }
     };
+
     return (
         <View style={styles.inputFieldsContainer}>
             <TextInput
@@ -47,7 +49,6 @@ export const GroceriesListInputs = ({ addItemToList, autoFocus }) => {
                 value={listItemName}
                 placeholder="Grocery"
                 keyboardType="ascii-capable"
-                autoFocus={autoFocus}
             />
 
             <View style={styles.amountContainer}>

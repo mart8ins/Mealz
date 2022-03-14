@@ -1,29 +1,38 @@
-import React, { useContext } from "react";
+import React from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
-import { GroceriesFromNewList } from "./components/GroceriesFromNewList";
-import { GroceriesFromRecipe } from "./components/GroceriesFromRecipe";
-import { ShopListContext } from "../../../context/ShopListContext";
+import { GroceriesListItems } from "./components/GroceriesListItems";
 
-export const GroceryListCustom = ({ listId }) => {
-    const { newShoppingList } = useContext(ShopListContext);
+// ja ir listId, tatad skatās gatavu listi u jābūt checkboxam
 
+export const GroceryListCustom = ({
+    listId,
+    recipePreview,
+    groceriesList = [],
+    setGroceriesList,
+    allShoppingLists,
+    setAllShoppingLists,
+}) => {
     const renderItem = ({ item }) => {
         return (
             <View>
-                {!item.recipe ? (
-                    <GroceriesFromNewList listId={listId} item={item} />
-                ) : (
-                    <GroceriesFromRecipe listId={listId} item={item} />
-                )}
+                <GroceriesListItems
+                    item={item}
+                    listId={listId}
+                    recipePreview={recipePreview}
+                    groceriesList={groceriesList}
+                    setGroceriesList={setGroceriesList}
+                    allShoppingLists={allShoppingLists}
+                    setAllShoppingLists={setAllShoppingLists}
+                />
             </View>
         );
     };
 
     return (
         <View style={styles.container}>
-            {newShoppingList.length > 0 ? (
+            {groceriesList.length > 0 ? (
                 <FlatList
-                    data={newShoppingList}
+                    data={groceriesList}
                     renderItem={renderItem}
                     keyExtractor={(item) => item.id}
                 />
@@ -46,12 +55,3 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
 });
-
-// "checked": false,
-//   "id": "81aabc53-48c5-4b00-9cc1-10056f3b0f22",
-//   "meal": "Breakfast",
-//   "name": "Olas",
-//   "portions": 1,
-//   "quantity": 2,
-//   "recipe": "Pankots",
-//   "unit": "pc",

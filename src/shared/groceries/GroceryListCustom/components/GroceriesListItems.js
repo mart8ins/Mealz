@@ -1,8 +1,18 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { theme } from "../../../../styling/index";
+import { ListItemOptionButton } from "./ListItemOptionButton";
 
-export const GroceriesFromRecipe = ({ item, listId }) => {
+export const GroceriesListItems = ({
+    item,
+    listId,
+    recipePreview,
+    groceriesList,
+    setGroceriesList,
+    allShoppingLists,
+    setAllShoppingLists,
+}) => {
+    console.log(item);
     return (
         <View>
             <View style={styles.listItemContainer}>
@@ -13,21 +23,34 @@ export const GroceriesFromRecipe = ({ item, listId }) => {
                     <View style={styles.itemQuantityContainer}>
                         <Text style={styles.quantity}>
                             <Text style={styles.quantity_number}>
-                                {item.quantity * item.portions}
+                                {item.portions
+                                    ? item.quantity * item.portions
+                                    : item.quantity}
                             </Text>{" "}
                             {item.unit}
                         </Text>
                     </View>
+                    <ListItemOptionButton
+                        listId={listId}
+                        item={item}
+                        groceriesList={groceriesList}
+                        setGroceriesList={setGroceriesList}
+                        allShoppingLists={allShoppingLists}
+                        setAllShoppingLists={setAllShoppingLists}
+                    />
                 </View>
-                <View style={styles.recipeInfoContainer}>
-                    <Text style={styles.recipeTitle}>
-                        From recipe:{" "}
-                        <Text style={styles.recipeName}>{item.recipe}</Text>
-                    </Text>
-                    <Text style={[styles.recipeTitle]}>
-                        For {item.portions} portions
-                    </Text>
-                </View>
+
+                {!recipePreview && item.recipe && (
+                    <View style={styles.recipeInfoContainer}>
+                        <Text style={styles.recipeTitle}>
+                            From recipe:{" "}
+                            <Text style={styles.recipeName}>{item.recipe}</Text>
+                        </Text>
+                        <Text style={[styles.recipeTitle]}>
+                            For {item.portions} portions
+                        </Text>
+                    </View>
+                )}
             </View>
         </View>
     );
@@ -76,7 +99,7 @@ const styles = StyleSheet.create({
     },
     recipeInfoContainer: {
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "space-evenly",
     },
     recipeTitle: {
         fontSize: theme.sizes.sm,

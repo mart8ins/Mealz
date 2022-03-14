@@ -10,8 +10,7 @@ import { theme } from "../../../../../styling/index";
 import { ShopListContext } from "../../../../../context/ShopListContext";
 
 export const ShoppingListContainer = ({ navigation }) => {
-    // const { shoppingLists } = useContext(ShopListContext);
-    const shoppingLists = []; // pagaidu
+    const { allShoppingLists } = useContext(ShopListContext);
     const renderList = ({ item }) => {
         return (
             <TouchableOpacity
@@ -26,8 +25,8 @@ export const ShoppingListContainer = ({ navigation }) => {
                 }
             >
                 <>
-                    <View style={[styles.dateContainer]}>
-                        <Text style={styles.date}>{item.date}</Text>
+                    <View style={[styles.titleContainer]}>
+                        <Text style={styles.title}>{item.listTitle}</Text>
                     </View>
                     <Text
                         style={[
@@ -46,9 +45,9 @@ export const ShoppingListContainer = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            {shoppingLists.length > 0 ? (
+            {allShoppingLists.length > 0 ? (
                 <FlatList
-                    data={shoppingLists}
+                    data={allShoppingLists}
                     renderItem={renderList}
                     keyExtractor={(item) => item.listId}
                 />
@@ -77,12 +76,12 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
     },
-    dateContainer: {
+    titleContainer: {
         fontSize: theme.sizes.md,
         borderRadius: 8,
         backgroundColor: theme.colors.bg.light,
     },
-    date: {
+    title: {
         color: theme.colors.color.dark,
         fontWeight: "bold",
         fontSize: theme.sizes.md,

@@ -28,13 +28,12 @@ export const RecipeIngredients = ({
     };
     return (
         <>
-            <GroceriesListInputs
-                addItemToList={addItemToList}
-                autoFocus={false}
-            />
+            <GroceriesListInputs addItemToList={addItemToList} />
             <GroceryListCustom
-                groceryList={recipeGroceries}
-                updateListItems={setRecipeGroceries}
+                listId={false}
+                recipePreview={true}
+                groceriesList={recipeGroceries}
+                setGroceriesList={setRecipeGroceries}
             />
         </>
     );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { ShopListContext } from "../../../../context/ShopListContext";
 import { View, StyleSheet } from "react-native";
 import uuid from "react-native-uuid";
@@ -17,13 +17,16 @@ export const NewList = ({ navigation }) => {
         setNewShoppingList,
         allShoppingLists,
         setAllShoppingLists,
+        listTitle,
+        setListTitle,
     } = useContext(ShopListContext);
-    const [date, setDate] = useState(undefined);
 
     // gate date and set for ui in needed format
     useEffect(() => {
-        const date = DateFormat();
-        setDate(String(date));
+        if (!listTitle) {
+            const date = DateFormat();
+            setListTitle(String(date));
+        }
     }, []);
 
     const addItemToList = (list) => {
@@ -31,7 +34,7 @@ export const NewList = ({ navigation }) => {
             const item = new Grocery(
                 uuid.v4(),
                 list.name,
-                Number(list.quantity),
+                list.quantity,
                 list.unit,
                 undefined,
                 undefined,
@@ -43,15 +46,16 @@ export const NewList = ({ navigation }) => {
     };
 
     const createList = () => {
-        if (date && newShoppingList.length > 0) {
+        if (listTitle && newShoppingList.length > 0) {
             const newList = new ShoppingList(
                 uuid.v4(),
-                date,
+                listTitle,
                 newShoppingList,
                 false
             );
             setAllShoppingLists([newList, ...allShoppingLists]);
             setNewShoppingList([]);
+            setListTitle(undefined);
             navigation.goBack();
         }
     };
@@ -59,15 +63,18 @@ export const NewList = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <NewListTitle
-                date={date}
+                listTitle={listTitle}
+                setListTitle={setListTitle}
                 list={newShoppingList}
                 createList={createList}
             />
-            <GroceriesListInputs
-                addItemToList={addItemToList}
-                autoFocus={true}
+            <GroceriesListInputs addItemToList={addItemToList} />
+            <GroceryListCustom
+                listId={false}
+                recipePreview={false}
+                groceriesList={newShoppingList}
+                setGroceriesList={setNewShoppingList}
             />
-            <GroceryListCustom />
         </View>
     );
 };
