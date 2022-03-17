@@ -68,19 +68,19 @@ const styles = StyleSheet.create({
     },
     meal__type__touch: {
         margin: 30,
-        backgroundColor: theme.colors.bg.light,
+        backgroundColor: theme.colors.background.background2,
         width: 200,
     },
     meal__type__name: {
-        color: theme.colors.color.dark,
+        color: theme.colors.text.color1,
         textAlign: "center",
         fontSize: theme.sizes.xl,
         padding: theme.sizes.sm,
     },
     choosenMeal: {
-        backgroundColor: theme.colors.bg.green,
+        backgroundColor: theme.colors.text.color1,
     },
     choosenMealName: {
-        color: theme.colors.color.light,
+        color: theme.colors.text.color2,
     },
 });

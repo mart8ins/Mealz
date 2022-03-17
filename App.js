@@ -36,9 +36,14 @@ export default function App() {
                                     initialRouteName="Shopping list"
                                     screenOptions={{
                                         tabBarActiveTintColor:
-                                            theme.colors.color.navigation,
+                                            theme.colors.navigation.color1,
                                         headerShown: false,
                                         unmountOnBlur: true,
+                                        tabBarStyle: {
+                                            backgroundColor:
+                                                theme.colors.navigation
+                                                    .background1,
+                                        },
                                     }}
                                 >
                                     <Tab.Screen

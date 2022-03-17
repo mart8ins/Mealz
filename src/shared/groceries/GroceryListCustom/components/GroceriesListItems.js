@@ -14,44 +14,42 @@ export const GroceriesListItems = ({
 }) => {
     console.log(item);
     return (
-        <View>
-            <View style={styles.listItemContainer}>
-                <View style={styles.itemDataContainer}>
-                    <View style={styles.itemNameContainer}>
-                        <Text style={styles.itemName}>{item.name}</Text>
-                    </View>
-                    <View style={styles.itemQuantityContainer}>
-                        <Text style={styles.quantity}>
-                            <Text style={styles.quantity_number}>
-                                {item.portions
-                                    ? item.quantity * item.portions
-                                    : item.quantity}
-                            </Text>{" "}
-                            {item.unit}
-                        </Text>
-                    </View>
-                    <ListItemOptionButton
-                        listId={listId}
-                        item={item}
-                        groceriesList={groceriesList}
-                        setGroceriesList={setGroceriesList}
-                        allShoppingLists={allShoppingLists}
-                        setAllShoppingLists={setAllShoppingLists}
-                    />
+        <View style={styles.listItemContainer}>
+            <View style={styles.itemDataContainer}>
+                <View style={styles.itemNameContainer}>
+                    <Text style={styles.itemName}>{item.name}</Text>
                 </View>
-
-                {!recipePreview && item.recipe && (
-                    <View style={styles.recipeInfoContainer}>
-                        <Text style={styles.recipeTitle}>
-                            From recipe:{" "}
-                            <Text style={styles.recipeName}>{item.recipe}</Text>
-                        </Text>
-                        <Text style={[styles.recipeTitle]}>
-                            For {item.portions} portions
-                        </Text>
-                    </View>
-                )}
+                <View style={styles.itemQuantityContainer}>
+                    <Text style={styles.quantity}>
+                        <Text style={styles.quantity_number}>
+                            {item.portions
+                                ? item.quantity * item.portions
+                                : item.quantity}
+                        </Text>{" "}
+                        {item.unit}
+                    </Text>
+                </View>
+                <ListItemOptionButton
+                    listId={listId}
+                    item={item}
+                    groceriesList={groceriesList}
+                    setGroceriesList={setGroceriesList}
+                    allShoppingLists={allShoppingLists}
+                    setAllShoppingLists={setAllShoppingLists}
+                />
             </View>
+
+            {!recipePreview && item.recipe && (
+                <View style={styles.recipeInfoContainer}>
+                    <Text style={styles.recipeTitle}>
+                        From recipe:{" "}
+                        <Text style={styles.recipeName}>{item.recipe}</Text>
+                    </Text>
+                    <Text style={[styles.recipeTitle]}>
+                        For {item.portions} portions
+                    </Text>
+                </View>
+            )}
         </View>
     );
 };
@@ -59,8 +57,7 @@ export const GroceriesListItems = ({
 const styles = StyleSheet.create({
     listItemContainer: {
         borderRadius: 4,
-        borderWidth: 1,
-        borderColor: theme.colors.bg.dark,
+        backgroundColor: theme.colors.background.background5,
         padding: theme.sizes.sm,
         margin: theme.sizes.sm,
         display: "flex",

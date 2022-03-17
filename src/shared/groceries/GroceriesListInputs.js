@@ -49,6 +49,7 @@ export const GroceriesListInputs = ({ addItemToList }) => {
                 value={listItemName}
                 placeholder="Grocery"
                 keyboardType="ascii-capable"
+                placeholderTextColor={"white"}
             />
 
             <View style={styles.amountContainer}>
@@ -58,6 +59,7 @@ export const GroceriesListInputs = ({ addItemToList }) => {
                     value={listItemQuantity}
                     placeholder="Quantity"
                     keyboardType="numeric"
+                    placeholderTextColor={"white"}
                 />
                 <UnitSelector
                     style={[styles.groceryNameInput, styles.groceryUnit]}
@@ -93,7 +95,7 @@ const styles = StyleSheet.create({
         padding: theme.sizes.sm,
         width: "95%",
         alignSelf: "center",
-        paddingBottom: 150,
+        paddingBottom: 115,
     },
     groceryNameInput: {
         borderBottomWidth: 1,
@@ -103,6 +105,7 @@ const styles = StyleSheet.create({
         margin: 3,
         borderRadius: 5,
         textAlign: "center",
+        color: theme.colors.text.color2,
     },
     amountContainer: {
         display: "flex",
@@ -117,20 +120,21 @@ const styles = StyleSheet.create({
         alignItems: "center",
         paddingLeft: 40,
         textAlign: "center",
+        color: theme.colors.text.color2,
     },
     addListItemButtonViewActive: {
         borderRadius: theme.sizes.sm,
         padding: theme.sizes.sm,
-        backgroundColor: theme.colors.bg.orange,
+        backgroundColor: theme.colors.background.background2,
     },
     addListItemButtonViewInactive: {
-        backgroundColor: theme.colors.bg.light,
+        backgroundColor: theme.colors.background.background1,
     },
     addListItemButtonTextActive: {
-        color: theme.colors.color.light,
+        color: theme.colors.text.color1,
         fontWeight: "bold",
     },
     addListItemButtonTextInactive: {
-        color: "#e5e4e2",
+        color: theme.colors.background.background1,
     },
 });

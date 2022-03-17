@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { ShopListContext } from "../../../../context/ShopListContext";
 import { View, StyleSheet } from "react-native";
 import uuid from "react-native-uuid";
+import { theme } from "../../../../styling";
 
 import { DateFormat } from "../../../../utils/DateFormat";
 
@@ -82,5 +83,6 @@ export const NewList = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: theme.colors.background.background1,
     },
 });

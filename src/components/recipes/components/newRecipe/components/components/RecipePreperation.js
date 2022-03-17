@@ -29,6 +29,7 @@ export const RecipePreperation = ({
                     onSubmitEditing={() => {
                         Keyboard.dismiss();
                     }}
+                    placeholderTextColor={"white"}
                 />
             </View>
         </KeyboardAvoidingView>
@@ -51,6 +52,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         borderLeftWidth: 1,
         borderBottomWidth: 2,
+        color: theme.colors.text.color2,
     },
     validNameBorder: {
         borderColor: theme.colors.color.green,

@@ -97,5 +97,6 @@ const styles = StyleSheet.create({
     },
     recipeGroceries__title: {
         fontWeight: "bold",
+        color: theme.colors.text.color2,
     },
 });

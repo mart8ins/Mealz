@@ -7,12 +7,12 @@ export const RecipeGroceryItem = ({ item }) => {
         <View style={styles.container}>
             <View style={styles.containerData}>
                 <View>
-                    <Text>{item.name}</Text>
+                    <Text style={styles.text}>{item.name}</Text>
                 </View>
 
                 <View style={styles.quantityContainer}>
-                    <Text>{item.quantity}</Text>
-                    <Text>{item.unit}</Text>
+                    <Text style={styles.text}>{item.quantity}</Text>
+                    <Text style={styles.text}>{item.unit}</Text>
                 </View>
             </View>
         </View>
@@ -35,11 +35,15 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         borderColor: theme.colors.color.dark,
     },
+    text: {
+        color: theme.colors.text.color2,
+    },
     quantityContainer: {
         flexDirection: "row",
+        color: "white",
     },
-    checkboxContainer: {
-        flex: 1,
-        alignItems: "center",
-    },
+    // checkboxContainer: {
+    //     flex: 1,
+    //     alignItems: "center",
+    // },
 });

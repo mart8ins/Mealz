@@ -36,5 +36,6 @@ export const RecipeFooter = ({
 const styles = StyleSheet.create({
     container: {
         marginTop: 45,
+        paddingBottom: 20,
     },
 });

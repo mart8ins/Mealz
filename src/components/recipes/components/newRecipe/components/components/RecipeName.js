@@ -14,6 +14,7 @@ export const RecipeName = ({ recipeName, setRecipeNameMeal }) => {
                 placeholder="Enter recipe name"
                 blurOnSubmit={true}
                 value={recipeName}
+                placeholderTextColor={"white"}
             />
         </View>
     );
@@ -34,5 +35,6 @@ const styles = StyleSheet.create({
         textAlign: "left",
         borderLeftWidth: 1,
         borderBottomWidth: 2,
+        color: "white",
     },
 });

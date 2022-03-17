@@ -83,9 +83,11 @@ const styles = StyleSheet.create({
     },
     container_top: {
         flex: 1,
+        backgroundColor: theme.colors.background.background1,
     },
     container: {
         paddingTop: 20,
+        paddingBottom: 20,
         alignItems: "center",
     },
     touchable: {

@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     title: {
-        color: theme.colors.color.dark,
+        color: theme.colors.text.color2,
         fontSize: theme.sizes.md,
         marginTop: theme.sizes.sm,
         fontWeight: "bold",
@@ -58,9 +58,10 @@ const styles = StyleSheet.create({
         padding: theme.sizes.md,
     },
     option: {
-        backgroundColor: theme.colors.bg.green,
-        color: theme.colors.color.light,
+        backgroundColor: theme.colors.background.background2,
+        color: theme.colors.text.color1,
         padding: theme.sizes.sm,
+        fontSize: 22,
     },
     imagePreview: {
         backgroundColor: "grey",

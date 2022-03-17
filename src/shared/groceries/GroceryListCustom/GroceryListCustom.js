@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
+import { theme } from "../../../styling/index";
 import { GroceriesListItems } from "./components/GroceriesListItems";
 
 // ja ir listId, tatad skatās gatavu listi u jābūt checkboxam
@@ -38,7 +39,7 @@ export const GroceryListCustom = ({
                 />
             ) : (
                 <View style={styles.noGroceriesToShow}>
-                    <Text>No groceries to show!</Text>
+                    <Text style={styles.text}>No groceries to show!</Text>
                 </View>
             )}
         </View>
@@ -53,5 +54,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+    },
+    text: {
+        color: theme.colors.text.color2,
     },
 });

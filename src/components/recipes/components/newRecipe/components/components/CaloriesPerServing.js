@@ -22,6 +22,7 @@ export const CaloriesPerServing = ({
                     keyboardType="phone-pad"
                     returnKeyType={"done"}
                     value={caloriesPerServing}
+                    placeholderTextColor={"white"}
                 />
             </View>
         </View>
@@ -35,7 +36,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
-    title: { fontWeight: "bold" },
+    title: {
+        fontWeight: "bold",
+        color: theme.colors.text.color2,
+    },
     inputContainer: {
         margin: theme.sizes.md,
         borderBottomWidth: 1,
@@ -47,5 +51,6 @@ const styles = StyleSheet.create({
         padding: theme.sizes.md,
         fontSize: theme.sizes.md,
         textAlign: "center",
+        color: theme.colors.text.color2,
     },
 });

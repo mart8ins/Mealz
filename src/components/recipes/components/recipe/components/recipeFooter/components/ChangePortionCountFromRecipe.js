@@ -12,7 +12,7 @@ export const ChangePortionCountFromRecipe = ({
         <View style={styles.container}>
             {newShoppingList.length > 0 && (
                 <View>
-                    <Text>
+                    <Text style={styles.portionStatusText}>
                         Currently{" "}
                         <Text style={styles.count}>
                             {addedToShoppingListTimes}
@@ -52,6 +52,10 @@ const styles = StyleSheet.create({
     },
     count: {
         fontWeight: "bold",
+        fontSize: 24,
+    },
+    portionStatusText: {
+        color: theme.colors.text.color1,
     },
     countChangeBtnContainer: {
         display: "flex",
@@ -59,15 +63,14 @@ const styles = StyleSheet.create({
         justifyContent: "space-evenly",
         marginTop: theme.sizes.md,
     },
-
     button: {
         borderRadius: 5,
-        backgroundColor: theme.colors.bg.dark,
+        backgroundColor: theme.colors.background.background2,
     },
     buttonText: {
         flexDirection: "column",
         textAlign: "center",
-        color: theme.colors.color.green,
+        color: theme.colors.text.color1,
         fontWeight: "bold",
         fontSize: 40,
         width: 50,

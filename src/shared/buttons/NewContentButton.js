@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
         padding: theme.sizes.sm,
     },
     button: {
-        backgroundColor: theme.colors.bg.dark,
+        backgroundColor: theme.colors.navigation.background1,
         borderRadius: 10,
         padding: 10,
         display: "flex",
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     buttonText: {
-        color: theme.colors.color.light,
+        color: theme.colors.text.color2,
         fontWeight: "bold",
         fontSize: theme.sizes.md,
     },

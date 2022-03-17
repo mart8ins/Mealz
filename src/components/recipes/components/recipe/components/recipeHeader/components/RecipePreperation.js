@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
     },
     text: {
-        width: "90%",
+        width: "85%",
         padding: 10,
         backgroundColor: theme.colors.bg.light,
         fontSize: 12,

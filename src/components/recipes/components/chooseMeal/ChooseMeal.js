@@ -19,6 +19,6 @@ export const ChooseMeal = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: theme.colors.bg.light,
+        backgroundColor: theme.colors.background.background1,
     },
 });

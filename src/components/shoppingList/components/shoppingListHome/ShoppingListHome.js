@@ -14,7 +14,10 @@ export const ShoppingListHome = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: theme.colors.bg.light },
+    container: {
+        flex: 1,
+        backgroundColor: theme.colors.background.background1,
+    },
     buttonContainer: {
         display: "flex",
         alignSelf: "flex-end",

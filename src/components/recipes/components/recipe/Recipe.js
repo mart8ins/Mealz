@@ -94,12 +94,12 @@ export const Recipe = ({ route }) => {
             <View style={styles.container}>
                 <View style={styles.containerData}>
                     <View>
-                        <Text>{item.name}</Text>
+                        <Text style={styles.text}>{item.name}</Text>
                     </View>
 
                     <View style={styles.quantityContainer}>
-                        <Text>{item.quantity}</Text>
-                        <Text>{item.unit}</Text>
+                        <Text style={styles.text}>{item.quantity}</Text>
+                        <Text style={styles.text}>{item.unit}</Text>
                     </View>
                 </View>
             </View>
@@ -143,6 +143,7 @@ export const Recipe = ({ route }) => {
 const styles = StyleSheet.create({
     container_top: {
         flex: 1,
+        backgroundColor: theme.colors.background.background1,
     },
     container: {
         alignItems: "center",
@@ -155,9 +156,13 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         margin: 5,
+        marginTop: 10,
         borderBottomWidth: 1,
         borderRadius: 10,
-        borderColor: theme.colors.color.dark,
+        borderColor: theme.colors.color.light,
+    },
+    text: {
+        color: "white",
     },
     quantityContainer: {
         flexDirection: "row",

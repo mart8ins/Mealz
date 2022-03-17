@@ -32,8 +32,8 @@ export const ShoppingListContainer = ({ navigation }) => {
                         style={[
                             styles.statusCh,
                             item.completed
-                                ? styles.statusCompleted
-                                : styles.statusPending,
+                                ? styles.statusCompletedText
+                                : styles.statusPendingText,
                         ]}
                     >
                         {item.completed ? "Completed" : "In process"}
@@ -66,37 +66,38 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     listItem: {
-        backgroundColor: theme.colors.bg.dark,
         marginBottom: theme.sizes.md,
         padding: theme.sizes.sm,
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        borderWidth: 1,
         borderRadius: 5,
     },
     titleContainer: {
         fontSize: theme.sizes.md,
-        borderRadius: 8,
-        backgroundColor: theme.colors.bg.light,
     },
     title: {
-        color: theme.colors.color.dark,
+        color: theme.colors.text.color2,
         fontWeight: "bold",
         fontSize: theme.sizes.md,
         margin: 0,
         padding: theme.sizes.sm,
     },
     statusCh: {
-        fontSize: theme.sizes.md,
+        fontSize: 12,
+        fontWeight: "bold",
     },
     statusCompleted: {
-        borderColor: theme.colors.color.green,
-        color: theme.colors.color.green,
+        backgroundColor: theme.colors.background.background4,
     },
     statusPending: {
-        borderColor: theme.colors.color.red,
+        backgroundColor: theme.colors.background.background3,
+    },
+    statusCompletedText: {
+        color: theme.colors.text.color4,
+    },
+    statusPendingText: {
         color: theme.colors.color.red,
     },
     noListsToShow: {

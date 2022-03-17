@@ -25,7 +25,7 @@ export const AddGroceriesFromRecipeBtns = ({
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: theme.colors.bg.green,
+        backgroundColor: theme.colors.background.background2,
         marginBottom: 10,
         alignSelf: "center",
         padding: theme.sizes.sm,
@@ -33,8 +33,9 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         alignSelf: "center",
-        color: theme.colors.color.light,
+        color: theme.colors.text.color1,
         fontWeight: "bold",
         fontSize: 18,
+        padding: 10,
     },
 });

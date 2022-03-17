@@ -99,12 +99,11 @@ const styles = StyleSheet.create({
         justifyContent: "space-evenly",
     },
     btnContainer: {
-        borderWidth: 1,
+        backgroundColor: theme.colors.background.background5,
         borderRadius: 5,
     },
     btnText: {
-        backgroundColor: theme.colors.bg.dark,
-        color: theme.colors.color.light,
+        color: theme.colors.text.color1,
         padding: theme.sizes.sm,
     },
 });

@@ -27,12 +27,13 @@ export const RecipeTitleForOptions = () => {
 const styles = StyleSheet.create({
     titleContainer: {
         flex: 1,
-        backgroundColor: theme.colors.bg.dark,
         justifyContent: "center",
         width: "100%",
         alignItems: "center",
     },
     title: {
-        color: theme.colors.color.light,
+        color: theme.colors.text.color1,
+        fontSize: 18,
+        margin: 5,
     },
 });

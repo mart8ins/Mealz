@@ -33,15 +33,15 @@ export const MealType = ({ navigation }) => {
 const styles = StyleSheet.create({
     typeContainer: {
         height: 130,
-        backgroundColor: theme.colors.bg.dark,
+        backgroundColor: theme.colors.background.background2,
         borderRadius: 5,
-        margin: 5,
+        margin: 15,
         alignItems: "center",
         justifyContent: "center",
     },
     typeName: {
         fontSize: theme.sizes.xl,
         fontWeight: "bold",
-        color: theme.colors.color.light,
+        color: theme.colors.text.color1,
     },
 });
