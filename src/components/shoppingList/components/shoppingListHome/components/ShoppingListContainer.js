@@ -53,7 +53,7 @@ export const ShoppingListContainer = ({ navigation }) => {
                 />
             ) : (
                 <View style={styles.noListsToShow}>
-                    <Text>No lists to show</Text>
+                    <Text style={styles.no_lists}>No lists to show</Text>
                 </View>
             )}
         </View>
@@ -104,5 +104,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+    },
+    no_lists: {
+        color: theme.colors.text.color2,
     },
 });

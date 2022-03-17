@@ -67,7 +67,9 @@ export const MealRecipes = ({ route, navigation }) => {
                     {loading ? (
                         <Text>Loading...</Text>
                     ) : (
-                        <Text>There are no recipes for this meal type</Text>
+                        <Text style={styles.no_recipes}>
+                            There are no recipes for this meal type
+                        </Text>
                     )}
                 </View>
             )}
@@ -118,5 +120,8 @@ const styles = StyleSheet.create({
     cal__number: {
         fontWeight: "bold",
         fontSize: theme.sizes.md,
+    },
+    no_recipes: {
+        color: theme.colors.text.color2,
     },
 });

@@ -10,14 +10,14 @@ export const ShoppingContextProvider = ({ children }) => {
 
     // SET CONTEXT FOR INITIAL RENDER
     const getShoppingListFromStorage = async () => {
-        // await AsyncStorage.removeItem("shoppingLists");
-        const store = await AsyncStorage.getItem("shoppingLists");
-        if (store) {
-            const shoppingListsParsed = JSON.parse(store);
-            if (shoppingListsParsed.length > 0) {
-                setAllShoppingLists(shoppingListsParsed);
-            }
-        }
+        await AsyncStorage.removeItem("shoppingLists");
+        // const store = await AsyncStorage.getItem("shoppingLists");
+        // if (store) {
+        //     const shoppingListsParsed = JSON.parse(store);
+        //     if (shoppingListsParsed.length > 0) {
+        //         setAllShoppingLists(shoppingListsParsed);
+        //     }
+        // }
     };
     useEffect(() => {
         getShoppingListFromStorage();
